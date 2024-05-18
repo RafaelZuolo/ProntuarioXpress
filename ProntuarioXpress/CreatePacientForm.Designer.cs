@@ -1,6 +1,6 @@
 ﻿namespace UI
 {
-    partial class CreatePacientForm
+    partial class PacientForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            createButton = new Button();
+            saveButton = new Button();
             nameLabel = new Label();
             nameTextBox = new TextBox();
             cpfTextBox = new TextBox();
@@ -36,25 +36,30 @@
             birthDateLabel = new Label();
             birthDaydateTimePicker = new DateTimePicker();
             cancelButton = new Button();
+            ageLabel = new Label();
+            ageTextBox = new TextBox();
+            appointmentsListBox = new ListBox();
+            appointmentsLabel = new Label();
+            pacientExtraInfoButton = new Button();
             SuspendLayout();
             // 
-            // createButton
+            // saveButton
             // 
-            createButton.Cursor = Cursors.Hand;
-            createButton.Location = new Point(93, 116);
-            createButton.Name = "createButton";
-            createButton.Size = new Size(117, 23);
-            createButton.TabIndex = 2;
-            createButton.Text = "Criar";
-            createButton.UseVisualStyleBackColor = true;
+            saveButton.Cursor = Cursors.Hand;
+            saveButton.Location = new Point(29, 143);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(100, 23);
+            saveButton.TabIndex = 2;
+            saveButton.Text = "Salvar";
+            saveButton.UseVisualStyleBackColor = true;
             // 
             // nameLabel
             // 
-            nameLabel.Location = new Point(9, 20);
+            nameLabel.Location = new Point(9, 15);
             nameLabel.Name = "nameLabel";
             nameLabel.Size = new Size(120, 15);
             nameLabel.TabIndex = 3;
-            nameLabel.Text = "Nome Completo :";
+            nameLabel.Text = "Nome :";
             nameLabel.TextAlign = ContentAlignment.MiddleRight;
             nameLabel.Click += label1_Click;
             // 
@@ -74,17 +79,17 @@
             // 
             // cpfLabel
             // 
-            cpfLabel.Location = new Point(9, 49);
+            cpfLabel.Location = new Point(12, 44);
             cpfLabel.Name = "cpfLabel";
             cpfLabel.Size = new Size(120, 15);
             cpfLabel.TabIndex = 5;
-            cpfLabel.Text = "CPF:";
+            cpfLabel.Text = "CPF :";
             cpfLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // birthDateLabel
             // 
             birthDateLabel.AutoSize = true;
-            birthDateLabel.Location = new Point(9, 78);
+            birthDateLabel.Location = new Point(11, 76);
             birthDateLabel.Name = "birthDateLabel";
             birthDateLabel.Size = new Size(118, 15);
             birthDateLabel.TabIndex = 7;
@@ -101,18 +106,68 @@
             // cancelButton
             // 
             cancelButton.Cursor = Cursors.Hand;
-            cancelButton.Location = new Point(216, 116);
+            cancelButton.Location = new Point(135, 143);
             cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(117, 23);
+            cancelButton.Size = new Size(100, 23);
             cancelButton.TabIndex = 9;
             cancelButton.Text = "Cancelar";
             cancelButton.UseVisualStyleBackColor = true;
             // 
-            // CreatePacientForm
+            // ageLabel
+            // 
+            ageLabel.Location = new Point(9, 102);
+            ageLabel.Name = "ageLabel";
+            ageLabel.Size = new Size(120, 15);
+            ageLabel.TabIndex = 10;
+            ageLabel.Text = "Idade :";
+            ageLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // ageTextBox
+            // 
+            ageTextBox.Location = new Point(133, 99);
+            ageTextBox.Name = "ageTextBox";
+            ageTextBox.ReadOnly = true;
+            ageTextBox.Size = new Size(200, 23);
+            ageTextBox.TabIndex = 11;
+            // 
+            // appointmentsListBox
+            // 
+            appointmentsListBox.FormattingEnabled = true;
+            appointmentsListBox.ItemHeight = 15;
+            appointmentsListBox.Location = new Point(350, 41);
+            appointmentsListBox.Name = "appointmentsListBox";
+            appointmentsListBox.Size = new Size(244, 79);
+            appointmentsListBox.TabIndex = 12;
+            // 
+            // appointmentsLabel
+            // 
+            appointmentsLabel.Location = new Point(350, 12);
+            appointmentsLabel.Name = "appointmentsLabel";
+            appointmentsLabel.Size = new Size(120, 15);
+            appointmentsLabel.TabIndex = 13;
+            appointmentsLabel.Text = "Sessões realizadas";
+            appointmentsLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // pacientExtraInfoButton
+            // 
+            pacientExtraInfoButton.Cursor = Cursors.Hand;
+            pacientExtraInfoButton.Location = new Point(241, 143);
+            pacientExtraInfoButton.Name = "pacientExtraInfoButton";
+            pacientExtraInfoButton.Size = new Size(100, 23);
+            pacientExtraInfoButton.TabIndex = 14;
+            pacientExtraInfoButton.Text = "Informações";
+            pacientExtraInfoButton.UseVisualStyleBackColor = true;
+            // 
+            // PacientForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(342, 151);
+            ClientSize = new Size(604, 176);
+            Controls.Add(pacientExtraInfoButton);
+            Controls.Add(appointmentsLabel);
+            Controls.Add(appointmentsListBox);
+            Controls.Add(ageTextBox);
+            Controls.Add(ageLabel);
             Controls.Add(cancelButton);
             Controls.Add(birthDaydateTimePicker);
             Controls.Add(birthDateLabel);
@@ -120,15 +175,15 @@
             Controls.Add(cpfLabel);
             Controls.Add(nameTextBox);
             Controls.Add(nameLabel);
-            Controls.Add(createButton);
-            Name = "CreatePacientForm";
-            Text = "Criar novo paciente...";
+            Controls.Add(saveButton);
+            Name = "PacientForm";
+            Text = "Paciente";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
-        private Button createButton;
+        private Button saveButton;
         private Label nameLabel;
         private TextBox nameTextBox;
         private TextBox cpfTextBox;
@@ -136,5 +191,10 @@
         private Label birthDateLabel;
         private DateTimePicker birthDaydateTimePicker;
         private Button cancelButton;
+        private Label ageLabel;
+        private TextBox ageTextBox;
+        private ListBox appointmentsListBox;
+        private Label appointmentsLabel;
+        private Button pacientExtraInfoButton;
     }
 }
