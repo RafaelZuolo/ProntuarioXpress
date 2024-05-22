@@ -7,7 +7,7 @@ namespace UI
         public EventHandler? CreatePacientEvent;
         public EventHandler<string>? RetrievePacientEvent;
         public EventHandler<string>? DeletePacientEvent;
-        public EventHandler? MainFormLoad;
+        public EventHandler? MainFormLoadEvent;
 
         private ICollection<PacientListItemViewItem> pacients = [];
 
@@ -48,7 +48,11 @@ namespace UI
 
         private void deletePacientButton_Click(object sender, EventArgs e)
         {
-            DeletePacientEvent?.Invoke(sender, "");
+            var id = (pacientListBox.SelectedItem as PacientListItemViewItem)?.Id;
+            if (id is not null)
+            {
+                DeletePacientEvent?.Invoke(sender, id);
+            }
         }
 
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -58,8 +62,8 @@ namespace UI
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            this.pacientListBox.SelectionMode = SelectionMode.One;
-            MainFormLoad?.Invoke(sender, EventArgs.Empty);
+            pacientListBox.SelectionMode = SelectionMode.One;
+            MainFormLoadEvent?.Invoke(sender, EventArgs.Empty);
         }
 
         private void pacientListBox_SelectedIndexChanged(object sender, EventArgs e)

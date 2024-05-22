@@ -40,4 +40,9 @@ public class PacientPresenter
     public void ShowExtraInfoEvent(object? sender, EventArgs e)
     {
     }
+
+    internal void Show()
+    {
+        form.Show();
+    }
 }

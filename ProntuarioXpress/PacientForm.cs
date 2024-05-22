@@ -8,17 +8,17 @@ public partial class PacientForm : Form
 
     public EventHandler<PacientViewItem>? SaveEvent;
     public EventHandler? ShowExtraInfoEvent;
-    public EventHandler<AppointmentViewItem>? OpenAppointmentEvent;
+    public EventHandler<AppointmentViewItem?>? OpenAppointmentEvent;
     public EventHandler? CloseEvent;
 
-    public PacientForm(PacientViewItem pacientViewItem)
+    public PacientForm()
     {
         InitializeComponent();
     }
 
     private void openAppointmentButton_Click(object sender, EventArgs e)
     {
-        OpenAppointmentEvent?.Invoke(sender, pacientViewItem.Appointments[appointmentsListBox.SelectedIndex]);
+        OpenAppointmentEvent?.Invoke(sender, pacientViewItem?.Appointments[appointmentsListBox.SelectedIndex]);
     }
 
     private void pacientExtraInfoButton_Click(object sender, EventArgs e)
