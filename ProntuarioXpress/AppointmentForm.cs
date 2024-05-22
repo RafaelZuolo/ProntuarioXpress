@@ -10,21 +10,11 @@ using System.Windows.Forms;
 
 namespace UI
 {
-    public partial class PacientForm : Form
+    public partial class AppointmentForm : Form
     {
-        public PacientForm()
+        public AppointmentForm()
         {
             InitializeComponent();
-        }
-
-        private void field1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

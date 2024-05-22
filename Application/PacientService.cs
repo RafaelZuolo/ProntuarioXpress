@@ -2,18 +2,13 @@
 
 namespace Application;
 
-public class PacientRecordService
+public class PacientService(ICollection<Pacient> pacientRecords) : IPacientService
 {
-    private readonly ICollection<PacientRecord> pacientRecords;
+    private readonly ICollection<Pacient> pacientRecords = pacientRecords;
 
-    public PacientRecordService(ICollection<PacientRecord> pacientRecords)
+    public Pacient CreatePacient(string name, string cpf, DateTime birthDate)
     {
-        this.pacientRecords = pacientRecords;
-    }
-
-    public PacientRecord CreatePacient(string name, string cpf, DateTime birthDate)
-    {
-        var pacient = new PacientRecord(name, cpf, birthDate)
+        var pacient = new Pacient(name, cpf, birthDate)
         {
             Id = Guid.NewGuid().ToString(),
         };
@@ -22,14 +17,14 @@ public class PacientRecordService
         return pacient;
     }
 
-    public void UpdatePacient(string id, PacientRecord pacient)
+    public void UpdatePacient(string id, Pacient pacient)
     {
         var oldPacient = pacientRecords.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Not found");
         pacientRecords.Remove(oldPacient);
-        pacientRecords.Add(pacient with { Id = id});
+        pacientRecords.Add(pacient with { Id = id });
     }
 
-    public PacientRecord GetPacient(string cpf)
+    public Pacient GetPacient(string cpf)
     {
         return pacientRecords.FirstOrDefault(p => p.CPF == cpf) ?? throw new Exception("Not found");
     }
@@ -37,9 +32,14 @@ public class PacientRecordService
     public void DeletePacient(string cpf)
     {
         var pacient = pacientRecords.FirstOrDefault(p => p.CPF == cpf);
-        if (pacient is not default(PacientRecord))
+        if (pacient is not default(Pacient))
         {
             pacientRecords.Remove(pacient);
         }
+    }
+
+    public IList<Pacient> SearchPacient()
+    {
+        return pacientRecords.ToList();
     }
 }

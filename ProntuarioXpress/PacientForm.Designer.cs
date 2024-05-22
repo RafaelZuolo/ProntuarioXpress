@@ -35,12 +35,13 @@
             cpfLabel = new Label();
             birthDateLabel = new Label();
             birthDaydateTimePicker = new DateTimePicker();
-            cancelButton = new Button();
+            closelButton = new Button();
             ageLabel = new Label();
             ageTextBox = new TextBox();
             appointmentsListBox = new ListBox();
             appointmentsLabel = new Label();
             pacientExtraInfoButton = new Button();
+            openAppointMentButton = new Button();
             SuspendLayout();
             // 
             // saveButton
@@ -52,6 +53,7 @@
             saveButton.TabIndex = 2;
             saveButton.Text = "Salvar";
             saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // nameLabel
             // 
@@ -61,7 +63,6 @@
             nameLabel.TabIndex = 3;
             nameLabel.Text = "Nome :";
             nameLabel.TextAlign = ContentAlignment.MiddleRight;
-            nameLabel.Click += label1_Click;
             // 
             // nameTextBox
             // 
@@ -103,15 +104,16 @@
             birthDaydateTimePicker.Size = new Size(200, 23);
             birthDaydateTimePicker.TabIndex = 8;
             // 
-            // cancelButton
+            // closelButton
             // 
-            cancelButton.Cursor = Cursors.Hand;
-            cancelButton.Location = new Point(135, 143);
-            cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(100, 23);
-            cancelButton.TabIndex = 9;
-            cancelButton.Text = "Cancelar";
-            cancelButton.UseVisualStyleBackColor = true;
+            closelButton.Cursor = Cursors.Hand;
+            closelButton.Location = new Point(135, 143);
+            closelButton.Name = "closelButton";
+            closelButton.Size = new Size(100, 23);
+            closelButton.TabIndex = 9;
+            closelButton.Text = "Fechar";
+            closelButton.UseVisualStyleBackColor = true;
+            closelButton.Click += closelButton_Click;
             // 
             // ageLabel
             // 
@@ -157,18 +159,31 @@
             pacientExtraInfoButton.TabIndex = 14;
             pacientExtraInfoButton.Text = "Informações";
             pacientExtraInfoButton.UseVisualStyleBackColor = true;
+            pacientExtraInfoButton.Click += pacientExtraInfoButton_Click;
+            // 
+            // openAppointMentButton
+            // 
+            openAppointMentButton.Cursor = Cursors.Hand;
+            openAppointMentButton.Location = new Point(494, 141);
+            openAppointMentButton.Name = "openAppointMentButton";
+            openAppointMentButton.Size = new Size(100, 23);
+            openAppointMentButton.TabIndex = 15;
+            openAppointMentButton.Text = "Abrir Sessão";
+            openAppointMentButton.UseVisualStyleBackColor = true;
+            openAppointMentButton.Click += openAppointmentButton_Click;
             // 
             // PacientForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(604, 176);
+            Controls.Add(openAppointMentButton);
             Controls.Add(pacientExtraInfoButton);
             Controls.Add(appointmentsLabel);
             Controls.Add(appointmentsListBox);
             Controls.Add(ageTextBox);
             Controls.Add(ageLabel);
-            Controls.Add(cancelButton);
+            Controls.Add(closelButton);
             Controls.Add(birthDaydateTimePicker);
             Controls.Add(birthDateLabel);
             Controls.Add(cpfTextBox);
@@ -190,11 +205,12 @@
         private Label cpfLabel;
         private Label birthDateLabel;
         private DateTimePicker birthDaydateTimePicker;
-        private Button cancelButton;
+        private Button closelButton;
         private Label ageLabel;
         private TextBox ageTextBox;
         private ListBox appointmentsListBox;
         private Label appointmentsLabel;
         private Button pacientExtraInfoButton;
+        private Button openAppointMentButton;
     }
 }
