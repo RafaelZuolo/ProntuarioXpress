@@ -8,7 +8,7 @@ public class PacientViewItem
 
     public string CPF { get; set; } = string.Empty;
 
-    public DateTime BirthDate { get; set; } = new();
+    public DateTime BirthDate { get; set; } = DateTime.Today;
 
     public string Id { get; init; } = string.Empty;
 
@@ -18,7 +18,7 @@ public class PacientViewItem
 
     public string Anamnese { get; set; } = string.Empty;
 
-    public IList<AppointmentViewItem> Appointments { get; } = [];
+    public IList<AppointmentViewItem> Appointments { get; init; } = [];
 
     public static PacientViewItem FromModel(Pacient pacient)
     {
@@ -31,6 +31,7 @@ public class PacientViewItem
             Address = pacient.Address,
             Anamnese = pacient.Anamnese,
             ComplementaryInfos = pacient.ComplementaryInfos,
+            Appointments = pacient.Appointments.Select(AppointmentViewItem.FromModel).ToList(),
         };
     }
 }

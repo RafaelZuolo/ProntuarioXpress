@@ -1,4 +1,6 @@
-﻿namespace UI.ViewItem;
+﻿using Core.Model;
+
+namespace UI.ViewItem;
 
 public class AppointmentViewItem
 {
@@ -13,4 +15,22 @@ public class AppointmentViewItem
     public bool WasBilled { get; set; }
 
     public bool WasPaid { get; set; }
+
+    public override string? ToString()
+    {
+        return $"{Date} {Date.DayOfWeek}";
+    }
+
+    public static AppointmentViewItem FromModel(Appointment appointment)
+    {
+        return new AppointmentViewItem
+        {
+            Id = appointment.Id,
+            Date = appointment.Date,
+            AmmountDue = appointment.Billing?.AmmountDue,
+            PayDay = appointment.Billing?.PayDay,
+            WasBilled = appointment.WasBilled,
+            WasPaid = appointment.WasPaid,
+        };
+    }
 }

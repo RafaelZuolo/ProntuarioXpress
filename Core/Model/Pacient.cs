@@ -10,7 +10,7 @@ public record Pacient(string FullName, string CPF, DateTime BirthDate)
 
     public string Anamnese { get; set; } = string.Empty;
 
-    public IList<Appointment> Appointments { get; } = [];
+    public IList<Appointment> Appointments { get; init; } = [];
 
     public override string? ToString()
     {

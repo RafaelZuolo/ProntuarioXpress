@@ -6,7 +6,7 @@ namespace UI.Presenter;
 public class PacientPresenter
 {
     private PacientForm form;
-    private PacientViewItem? pacient;
+    private PacientViewItem pacient;
 
     public PacientPresenter(PacientForm form)
     {
@@ -20,7 +20,7 @@ public class PacientPresenter
     public void InitWith(Pacient pacient)
     {
         this.pacient = PacientViewItem.FromModel(pacient);
-        form.Load(this.pacient);
+        form.InitWith(this.pacient);
     }
 
     public void SaveEvent(object? sender, PacientViewItem pacient)
@@ -28,8 +28,25 @@ public class PacientPresenter
 
     }
 
-    public void CloseEvent(object? sender, EventArgs e)
+    public void CloseEvent(object? sender, FormClosingEventArgs e)
     {
+        var message = $"Deseja salvar antes de fechar esse paciente?";
+        var caption = "Fechar paciente";
+        var result = MessageBox.Show(
+            message,
+            caption,
+            MessageBoxButtons.YesNoCancel,
+            MessageBoxIcon.Question);
+
+        if (result == DialogResult.Yes)
+        {
+            SaveEvent(this, pacient);
+        }
+        else if (result == DialogResult.Cancel)
+        {
+            e.Cancel = true;
+            return;
+        }
     }
 
     public void OpenAppointmentEvent(object? sender, AppointmentViewItem appointment)

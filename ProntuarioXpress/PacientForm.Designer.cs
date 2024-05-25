@@ -42,6 +42,7 @@
             appointmentsLabel = new Label();
             pacientExtraInfoButton = new Button();
             openAppointMentButton = new Button();
+            newAppointmentBtton = new Button();
             SuspendLayout();
             // 
             // saveButton
@@ -140,15 +141,16 @@
             appointmentsListBox.Name = "appointmentsListBox";
             appointmentsListBox.Size = new Size(244, 79);
             appointmentsListBox.TabIndex = 12;
+            appointmentsListBox.SelectedIndexChanged += appointmentsListBox_SelectedIndexChanged;
             // 
             // appointmentsLabel
             // 
-            appointmentsLabel.Location = new Point(350, 12);
+            appointmentsLabel.Location = new Point(350, 15);
             appointmentsLabel.Name = "appointmentsLabel";
             appointmentsLabel.Size = new Size(120, 15);
             appointmentsLabel.TabIndex = 13;
-            appointmentsLabel.Text = "Sessões realizadas";
-            appointmentsLabel.TextAlign = ContentAlignment.MiddleRight;
+            appointmentsLabel.Text = "Sessões realizadas:";
+            appointmentsLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pacientExtraInfoButton
             // 
@@ -172,11 +174,22 @@
             openAppointMentButton.UseVisualStyleBackColor = true;
             openAppointMentButton.Click += openAppointmentButton_Click;
             // 
+            // newAppointmentBtton
+            // 
+            newAppointmentBtton.Cursor = Cursors.Hand;
+            newAppointmentBtton.Location = new Point(388, 141);
+            newAppointmentBtton.Name = "newAppointmentBtton";
+            newAppointmentBtton.Size = new Size(100, 23);
+            newAppointmentBtton.TabIndex = 16;
+            newAppointmentBtton.Text = "Nova Sessão";
+            newAppointmentBtton.UseVisualStyleBackColor = true;
+            // 
             // PacientForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(604, 176);
+            Controls.Add(newAppointmentBtton);
             Controls.Add(openAppointMentButton);
             Controls.Add(pacientExtraInfoButton);
             Controls.Add(appointmentsLabel);
@@ -192,7 +205,9 @@
             Controls.Add(nameLabel);
             Controls.Add(saveButton);
             Name = "PacientForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Paciente";
+            FormClosing += PacientForm_FormClosing;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -212,5 +227,6 @@
         private Label appointmentsLabel;
         private Button pacientExtraInfoButton;
         private Button openAppointMentButton;
+        private Button newAppointmentBtton;
     }
 }

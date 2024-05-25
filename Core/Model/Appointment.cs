@@ -1,10 +1,8 @@
 ﻿namespace Core.Model;
 
-public record Appointment(DateTime date)
+public record Appointment(DateTime Date)
 {
     public string Id { get; init; } = string.Empty;
-
-    public DateTime Date { get; } = date;
 
     public Billing? Billing { get; set; }
 

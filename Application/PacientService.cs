@@ -24,14 +24,14 @@ public class PacientService(ICollection<Pacient> pacientRecords) : IPacientServi
         pacientRecords.Add(pacient with { Id = id });
     }
 
-    public Pacient GetPacient(string cpf)
+    public Pacient GetPacient(string id)
     {
-        return pacientRecords.FirstOrDefault(p => p.CPF == cpf) ?? throw new Exception("Not found");
+        return pacientRecords.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Not found");
     }
 
-    public void DeletePacient(string cpf)
+    public void DeletePacient(string id)
     {
-        var pacient = pacientRecords.FirstOrDefault(p => p.CPF == cpf);
+        var pacient = pacientRecords.FirstOrDefault(p => p.Id == id);
         if (pacient is not default(Pacient))
         {
             pacientRecords.Remove(pacient);

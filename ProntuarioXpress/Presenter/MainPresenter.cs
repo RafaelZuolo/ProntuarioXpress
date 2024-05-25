@@ -8,6 +8,7 @@ public class MainPresenter
 {
     private readonly MainForm mainForm;
     private readonly IPacientService pacientService;
+    public Form Form => mainForm;
 
     public MainPresenter(MainForm mainForm, IPacientService pacientService)
     {
