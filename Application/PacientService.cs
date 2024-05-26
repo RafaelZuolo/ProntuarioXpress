@@ -38,7 +38,7 @@ public class PacientService(ICollection<Pacient> pacientRecords) : IPacientServi
         }
     }
 
-    public IList<Pacient> SearchPacient()
+    public IList<Pacient> SearchPacients()
     {
         return pacientRecords.ToList();
     }

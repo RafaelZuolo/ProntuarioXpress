@@ -23,7 +23,8 @@ public class MainPresenter
     private void CreatePacientEvent(object? sender, EventArgs e)
     {
         var pacientForm = new PacientForm();
-        var pacientPresenter = new PacientPresenter(pacientForm);
+        var pacientPresenter = new PacientPresenter(pacientForm, pacientService);
+        pacientPresenter.OnClose += MainFormLoadEvent;
         pacientPresenter.InitWith(new Pacient(string.Empty, string.Empty, DateTime.Today));
         pacientPresenter.Show();
     }
@@ -31,7 +32,9 @@ public class MainPresenter
     private void RetrievePacientEvent(object? sender, string id)
     {
         var pacientForm = new PacientForm();
-        var pacientPresenter = new PacientPresenter(pacientForm);
+        var pacientPresenter = new PacientPresenter(pacientForm, pacientService);
+        pacientPresenter.OnClose += MainFormLoadEvent;
+
         var pacient = pacientService.GetPacient(id);
         pacientPresenter.InitWith(pacient);
         pacientPresenter.Show();
@@ -45,7 +48,7 @@ public class MainPresenter
     private void MainFormLoadEvent(object? sender, EventArgs e)
     {
         mainForm.LoadPacientList(pacientService
-            .SearchPacient()
+            .SearchPacients()
             .Select(PacientListItemViewItem.FromPacient)
             .ToList());
     }

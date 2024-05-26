@@ -48,6 +48,7 @@
             pacientListBox.Size = new Size(353, 259);
             pacientListBox.TabIndex = 0;
             pacientListBox.SelectedIndexChanged += pacientListBox_SelectedIndexChanged;
+            pacientListBox.DoubleClick += pacientListBox_DoubleClick;
             // 
             // createPacientButton
             // 
@@ -108,7 +109,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(373, 403);
+            ClientSize = new Size(373, 338);
             Controls.Add(deletePacientButton);
             Controls.Add(retrievePacientButton);
             Controls.Add(createPacientButton);

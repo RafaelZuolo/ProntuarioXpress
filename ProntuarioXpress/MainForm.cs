@@ -70,5 +70,10 @@ namespace UI
         {
             retrievePacientButton.Enabled = pacientListBox.SelectedItem is not null;
         }
+
+        private void pacientListBox_DoubleClick(object sender, EventArgs e)
+        {
+            retrievePacientButton_Click(sender, e);
+        }
     }
 }

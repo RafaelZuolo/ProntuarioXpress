@@ -34,7 +34,7 @@
             cpfTextBox = new TextBox();
             cpfLabel = new Label();
             birthDateLabel = new Label();
-            birthDaydateTimePicker = new DateTimePicker();
+            birthdayDateTimePicker = new DateTimePicker();
             closelButton = new Button();
             ageLabel = new Label();
             ageTextBox = new TextBox();
@@ -98,12 +98,14 @@
             birthDateLabel.Text = "Data de nascimento :";
             birthDateLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
-            // birthDaydateTimePicker
+            // birthdayDateTimePicker
             // 
-            birthDaydateTimePicker.Location = new Point(133, 70);
-            birthDaydateTimePicker.Name = "birthDaydateTimePicker";
-            birthDaydateTimePicker.Size = new Size(200, 23);
-            birthDaydateTimePicker.TabIndex = 8;
+            birthdayDateTimePicker.Format = DateTimePickerFormat.Short;
+            birthdayDateTimePicker.Location = new Point(133, 70);
+            birthdayDateTimePicker.Name = "birthdayDateTimePicker";
+            birthdayDateTimePicker.Size = new Size(200, 23);
+            birthdayDateTimePicker.TabIndex = 8;
+            birthdayDateTimePicker.ValueChanged += birthdayDateTimePicker_ValueChanged;
             // 
             // closelButton
             // 
@@ -142,6 +144,7 @@
             appointmentsListBox.Size = new Size(244, 79);
             appointmentsListBox.TabIndex = 12;
             appointmentsListBox.SelectedIndexChanged += appointmentsListBox_SelectedIndexChanged;
+            appointmentsListBox.DoubleClick += appointmentsListBox_DoubleClick;
             // 
             // appointmentsLabel
             // 
@@ -197,7 +200,7 @@
             Controls.Add(ageTextBox);
             Controls.Add(ageLabel);
             Controls.Add(closelButton);
-            Controls.Add(birthDaydateTimePicker);
+            Controls.Add(birthdayDateTimePicker);
             Controls.Add(birthDateLabel);
             Controls.Add(cpfTextBox);
             Controls.Add(cpfLabel);
@@ -219,7 +222,7 @@
         private TextBox cpfTextBox;
         private Label cpfLabel;
         private Label birthDateLabel;
-        private DateTimePicker birthDaydateTimePicker;
+        private DateTimePicker birthdayDateTimePicker;
         private Button closelButton;
         private Label ageLabel;
         private TextBox ageTextBox;

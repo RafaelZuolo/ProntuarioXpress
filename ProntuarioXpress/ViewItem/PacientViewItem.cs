@@ -34,4 +34,15 @@ public class PacientViewItem
             Appointments = pacient.Appointments.Select(AppointmentViewItem.FromModel).ToList(),
         };
     }
+
+    internal Pacient ToModel()
+    {
+        return new Pacient(FullName, CPF, BirthDate)
+        {
+            Id = Id,
+            Address = Address,
+            Anamnese = Anamnese,
+            ComplementaryInfos = ComplementaryInfos,
+        };
+    }
 }

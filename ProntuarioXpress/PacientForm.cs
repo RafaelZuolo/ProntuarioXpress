@@ -1,4 +1,5 @@
-﻿using Core.Utils;
+﻿using Core.Model;
+using Core.Utils;
 using UI.ViewItem;
 
 namespace UI;
@@ -35,6 +36,7 @@ public partial class PacientForm : Form
 
     private void saveButton_Click(object sender, EventArgs e)
     {
+        UpdatePacientInfo();
         SaveEvent?.Invoke(sender, pacientViewItem);
     }
 
@@ -42,7 +44,7 @@ public partial class PacientForm : Form
     {
         pacientViewItem = pacient;
         nameTextBox.Text = pacient.FullName;
-        birthDaydateTimePicker.Value = pacient.BirthDate;
+        birthdayDateTimePicker.Value = pacient.BirthDate;
         cpfTextBox.Text = pacient.CPF;
         ageTextBox.Text = pacient.BirthDate.GetAge().ToString();
         appointmentsListBox.BeginUpdate();
@@ -53,6 +55,15 @@ public partial class PacientForm : Form
         }
         appointmentsListBox.EndUpdate();
         openAppointMentButton.Enabled = false;
+
+        saveButton.Text = string.IsNullOrEmpty(pacient.Id) ? "Criar" : "Atualizar";
+    }
+
+    private void UpdatePacientInfo()
+    {
+        pacientViewItem.FullName = nameTextBox.Text;
+        pacientViewItem.BirthDate = birthdayDateTimePicker.Value;
+        pacientViewItem.CPF = cpfTextBox.Text;
     }
 
     private void appointmentsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -62,6 +73,17 @@ public partial class PacientForm : Form
 
     private void PacientForm_FormClosing(object sender, FormClosingEventArgs e)
     {
+        UpdatePacientInfo();
         CloseEvent?.Invoke(sender, e);
+    }
+
+    private void birthdayDateTimePicker_ValueChanged(object sender, EventArgs e)
+    {
+        ageTextBox.Text = birthdayDateTimePicker.Value.GetAge().ToString();
+    }
+
+    private void appointmentsListBox_DoubleClick(object sender, EventArgs e)
+    {
+        OpenAppointmentEvent?.Invoke(sender, pacientViewItem.Appointments[appointmentsListBox.SelectedIndex]);
     }
 }

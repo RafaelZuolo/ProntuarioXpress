@@ -7,7 +7,7 @@ namespace Application
         Pacient CreatePacient(string name, string cpf, DateTime birthDate);
         void DeletePacient(string cpf);
         Pacient GetPacient(string cpf);
-        IList<Pacient> SearchPacient();
+        IList<Pacient> SearchPacients();
         void UpdatePacient(string id, Pacient pacient);
     }
 }
