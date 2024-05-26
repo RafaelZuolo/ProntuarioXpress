@@ -6,7 +6,7 @@ namespace UI.Presenters;
 
 public class PacientPresenter
 {
-    private PacientForm form;
+    private readonly PacientForm form;
     private PacientViewItem pacient = new();
     private readonly IPacientService pacientService;
     public EventHandler? OnClose;
@@ -18,6 +18,7 @@ public class PacientPresenter
         this.form.SaveEvent += SaveEvent;
         this.form.CloseEvent += CloseEvent;
         this.form.OpenAppointmentEvent += OpenAppointmentEvent;
+        this.form.NewAppointmentEvent += NewAppointmentEvent;
         this.form.ShowExtraInfoEvent += ShowExtraInfoEvent;
     }
 
@@ -37,20 +38,12 @@ public class PacientPresenter
                 var createdPacientViewItem = PacientViewItem.FromModel(createdPacient);
                 form.InitWith(createdPacientViewItem);
                 this.pacient = createdPacientViewItem;
-                MessageBox.Show(
-                    text: "Paciente criado com sucesso",
-                    caption: "Salvar",
-                    buttons: MessageBoxButtons.OK,
-                    icon: MessageBoxIcon.Information);
+                form.SetStatusStripLabel("Paciente criado com sucesso");
             }
             else
             {
                 pacientService.UpdatePacient(pacient.Id, pacient.ToModel());
-                MessageBox.Show(
-                    text: "Paciente atualizado com sucesso",
-                    caption: "Salvar",
-                    buttons: MessageBoxButtons.OK,
-                    icon: MessageBoxIcon.Information);
+                form.SetStatusStripLabel("Paciente atualizado com sucesso");
             }
         }
         catch (Exception e)
@@ -87,7 +80,14 @@ public class PacientPresenter
 
     public void OpenAppointmentEvent(object? sender, AppointmentViewItem appointment)
     {
+        var appointmentPresenter = new AppointmentPresenter(new AppointmentForm());
+        appointmentPresenter.Show();
+    }
 
+    public void NewAppointmentEvent(object? sender, EventArgs e)
+    {
+        var appointmentPresenter = new AppointmentPresenter(new AppointmentForm());
+        appointmentPresenter.Show();
     }
 
     public void ShowExtraInfoEvent(object? sender, EventArgs e)

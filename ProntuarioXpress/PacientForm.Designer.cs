@@ -42,14 +42,17 @@
             appointmentsLabel = new Label();
             pacientExtraInfoButton = new Button();
             openAppointMentButton = new Button();
-            newAppointmentBtton = new Button();
+            newAppointmentButton = new Button();
+            statusStrip = new StatusStrip();
+            toolStripStatusLabel = new ToolStripStatusLabel();
+            statusStrip.SuspendLayout();
             SuspendLayout();
             // 
             // saveButton
             // 
             saveButton.Cursor = Cursors.Hand;
             saveButton.Location = new Point(46, 238);
-            saveButton.Margin = new Padding(5, 5, 5, 5);
+            saveButton.Margin = new Padding(5);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(157, 38);
             saveButton.TabIndex = 2;
@@ -70,7 +73,7 @@
             // nameTextBox
             // 
             nameTextBox.Location = new Point(209, 20);
-            nameTextBox.Margin = new Padding(5, 5, 5, 5);
+            nameTextBox.Margin = new Padding(5);
             nameTextBox.Name = "nameTextBox";
             nameTextBox.Size = new Size(312, 33);
             nameTextBox.TabIndex = 4;
@@ -78,7 +81,7 @@
             // cpfTextBox
             // 
             cpfTextBox.Location = new Point(209, 68);
-            cpfTextBox.Margin = new Padding(5, 5, 5, 5);
+            cpfTextBox.Margin = new Padding(5);
             cpfTextBox.Name = "cpfTextBox";
             cpfTextBox.Size = new Size(312, 33);
             cpfTextBox.TabIndex = 6;
@@ -108,7 +111,7 @@
             // 
             birthdayDateTimePicker.Format = DateTimePickerFormat.Short;
             birthdayDateTimePicker.Location = new Point(209, 117);
-            birthdayDateTimePicker.Margin = new Padding(5, 5, 5, 5);
+            birthdayDateTimePicker.Margin = new Padding(5);
             birthdayDateTimePicker.Name = "birthdayDateTimePicker";
             birthdayDateTimePicker.RightToLeft = RightToLeft.No;
             birthdayDateTimePicker.Size = new Size(312, 33);
@@ -119,7 +122,7 @@
             // 
             closelButton.Cursor = Cursors.Hand;
             closelButton.Location = new Point(212, 238);
-            closelButton.Margin = new Padding(5, 5, 5, 5);
+            closelButton.Margin = new Padding(5);
             closelButton.Name = "closelButton";
             closelButton.Size = new Size(157, 38);
             closelButton.TabIndex = 9;
@@ -140,7 +143,7 @@
             // ageTextBox
             // 
             ageTextBox.Location = new Point(209, 165);
-            ageTextBox.Margin = new Padding(5, 5, 5, 5);
+            ageTextBox.Margin = new Padding(5);
             ageTextBox.Name = "ageTextBox";
             ageTextBox.ReadOnly = true;
             ageTextBox.Size = new Size(312, 33);
@@ -151,7 +154,7 @@
             appointmentsListBox.FormattingEnabled = true;
             appointmentsListBox.ItemHeight = 25;
             appointmentsListBox.Location = new Point(550, 68);
-            appointmentsListBox.Margin = new Padding(5, 5, 5, 5);
+            appointmentsListBox.Margin = new Padding(5);
             appointmentsListBox.Name = "appointmentsListBox";
             appointmentsListBox.Size = new Size(381, 129);
             appointmentsListBox.TabIndex = 12;
@@ -172,7 +175,7 @@
             // 
             pacientExtraInfoButton.Cursor = Cursors.Hand;
             pacientExtraInfoButton.Location = new Point(379, 238);
-            pacientExtraInfoButton.Margin = new Padding(5, 5, 5, 5);
+            pacientExtraInfoButton.Margin = new Padding(5);
             pacientExtraInfoButton.Name = "pacientExtraInfoButton";
             pacientExtraInfoButton.Size = new Size(157, 38);
             pacientExtraInfoButton.TabIndex = 14;
@@ -184,7 +187,7 @@
             // 
             openAppointMentButton.Cursor = Cursors.Hand;
             openAppointMentButton.Location = new Point(776, 235);
-            openAppointMentButton.Margin = new Padding(5, 5, 5, 5);
+            openAppointMentButton.Margin = new Padding(5);
             openAppointMentButton.Name = "openAppointMentButton";
             openAppointMentButton.Size = new Size(157, 38);
             openAppointMentButton.TabIndex = 15;
@@ -192,23 +195,40 @@
             openAppointMentButton.UseVisualStyleBackColor = true;
             openAppointMentButton.Click += openAppointmentButton_Click;
             // 
-            // newAppointmentBtton
+            // newAppointmentButton
             // 
-            newAppointmentBtton.Cursor = Cursors.Hand;
-            newAppointmentBtton.Location = new Point(610, 235);
-            newAppointmentBtton.Margin = new Padding(5, 5, 5, 5);
-            newAppointmentBtton.Name = "newAppointmentBtton";
-            newAppointmentBtton.Size = new Size(157, 38);
-            newAppointmentBtton.TabIndex = 16;
-            newAppointmentBtton.Text = "Nova Sessão";
-            newAppointmentBtton.UseVisualStyleBackColor = true;
+            newAppointmentButton.Cursor = Cursors.Hand;
+            newAppointmentButton.Location = new Point(610, 235);
+            newAppointmentButton.Margin = new Padding(5);
+            newAppointmentButton.Name = "newAppointmentButton";
+            newAppointmentButton.Size = new Size(157, 38);
+            newAppointmentButton.TabIndex = 16;
+            newAppointmentButton.Text = "Nova Sessão";
+            newAppointmentButton.UseVisualStyleBackColor = true;
+            newAppointmentButton.Click += newAppointmentBtton_Click;
+            // 
+            // statusStrip
+            // 
+            statusStrip.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            statusStrip.Items.AddRange(new ToolStripItem[] { toolStripStatusLabel });
+            statusStrip.Location = new Point(0, 322);
+            statusStrip.MinimumSize = new Size(0, 30);
+            statusStrip.Name = "statusStrip";
+            statusStrip.Size = new Size(949, 22);
+            statusStrip.TabIndex = 17;
+            // 
+            // toolStripStatusLabel
+            // 
+            toolStripStatusLabel.Name = "toolStripStatusLabel";
+            toolStripStatusLabel.Size = new Size(0, 17);
             // 
             // PacientForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(949, 293);
-            Controls.Add(newAppointmentBtton);
+            ClientSize = new Size(949, 344);
+            Controls.Add(statusStrip);
+            Controls.Add(newAppointmentButton);
             Controls.Add(openAppointMentButton);
             Controls.Add(pacientExtraInfoButton);
             Controls.Add(appointmentsLabel);
@@ -224,11 +244,13 @@
             Controls.Add(nameLabel);
             Controls.Add(saveButton);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "PacientForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Paciente";
             FormClosing += PacientForm_FormClosing;
+            statusStrip.ResumeLayout(false);
+            statusStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -248,6 +270,8 @@
         private Label appointmentsLabel;
         private Button pacientExtraInfoButton;
         private Button openAppointMentButton;
-        private Button newAppointmentBtton;
+        private Button newAppointmentButton;
+        private StatusStrip statusStrip;
+        private ToolStripStatusLabel toolStripStatusLabel;
     }
 }

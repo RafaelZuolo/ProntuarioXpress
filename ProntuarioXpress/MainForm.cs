@@ -30,6 +30,7 @@ namespace UI
             pacientListBox.SelectedItem = null;
             pacientListBox.EndUpdate();
             retrievePacientButton.Enabled = false;
+            deletePacientButton.Enabled = false;
         }
 
         private void createPacientButton_Click(object sender, EventArgs e)
@@ -69,6 +70,7 @@ namespace UI
         private void pacientListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             retrievePacientButton.Enabled = pacientListBox.SelectedItem is not null;
+            deletePacientButton.Enabled = pacientListBox.SelectedItem is not null;
         }
 
         private void pacientListBox_DoubleClick(object sender, EventArgs e)

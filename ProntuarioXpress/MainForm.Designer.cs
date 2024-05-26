@@ -32,10 +32,10 @@
             createPacientButton = new Button();
             retrievePacientButton = new Button();
             deletePacientButton = new Button();
-            menuStrip1 = new MenuStrip();
-            sobreToolStripMenuItem = new ToolStripMenuItem();
-            aboutToolStripMenuItem1 = new ToolStripMenuItem();
-            menuStrip1.SuspendLayout();
+            menuStrip = new MenuStrip();
+            helpToolStripMenuItem = new ToolStripMenuItem();
+            aboutToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip.SuspendLayout();
             SuspendLayout();
             // 
             // pacientListBox
@@ -44,7 +44,7 @@
             pacientListBox.FormattingEnabled = true;
             pacientListBox.ItemHeight = 25;
             pacientListBox.Location = new Point(19, 45);
-            pacientListBox.Margin = new Padding(5, 5, 5, 5);
+            pacientListBox.Margin = new Padding(5);
             pacientListBox.Name = "pacientListBox";
             pacientListBox.Size = new Size(552, 429);
             pacientListBox.TabIndex = 0;
@@ -54,7 +54,7 @@
             // createPacientButton
             // 
             createPacientButton.Location = new Point(19, 487);
-            createPacientButton.Margin = new Padding(5, 5, 5, 5);
+            createPacientButton.Margin = new Padding(5);
             createPacientButton.Name = "createPacientButton";
             createPacientButton.Size = new Size(181, 68);
             createPacientButton.TabIndex = 1;
@@ -66,7 +66,7 @@
             // 
             retrievePacientButton.Anchor = AnchorStyles.Top;
             retrievePacientButton.Location = new Point(209, 487);
-            retrievePacientButton.Margin = new Padding(5, 5, 5, 5);
+            retrievePacientButton.Margin = new Padding(5);
             retrievePacientButton.Name = "retrievePacientButton";
             retrievePacientButton.Size = new Size(170, 68);
             retrievePacientButton.TabIndex = 2;
@@ -78,7 +78,7 @@
             // 
             deletePacientButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             deletePacientButton.Location = new Point(388, 487);
-            deletePacientButton.Margin = new Padding(5, 5, 5, 5);
+            deletePacientButton.Margin = new Padding(5);
             deletePacientButton.Name = "deletePacientButton";
             deletePacientButton.Size = new Size(185, 68);
             deletePacientButton.TabIndex = 3;
@@ -86,29 +86,29 @@
             deletePacientButton.UseVisualStyleBackColor = true;
             deletePacientButton.Click += deletePacientButton_Click;
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sobreToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(9, 3, 0, 3);
-            menuStrip1.Size = new Size(586, 25);
-            menuStrip1.TabIndex = 4;
-            menuStrip1.Text = "menuStrip1";
+            menuStrip.Items.AddRange(new ToolStripItem[] { helpToolStripMenuItem });
+            menuStrip.Location = new Point(0, 0);
+            menuStrip.Name = "menuStrip";
+            menuStrip.Padding = new Padding(9, 3, 0, 3);
+            menuStrip.Size = new Size(586, 25);
+            menuStrip.TabIndex = 4;
+            menuStrip.Text = "menuStrip1";
             // 
-            // sobreToolStripMenuItem
+            // helpToolStripMenuItem
             // 
-            sobreToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem1 });
-            sobreToolStripMenuItem.Name = "sobreToolStripMenuItem";
-            sobreToolStripMenuItem.Size = new Size(50, 20);
-            sobreToolStripMenuItem.Text = "&Ajuda";
+            helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { aboutToolStripMenuItem });
+            helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            helpToolStripMenuItem.Size = new Size(50, 19);
+            helpToolStripMenuItem.Text = "&Ajuda";
             // 
-            // aboutToolStripMenuItem1
+            // aboutToolStripMenuItem
             // 
-            aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            aboutToolStripMenuItem1.Size = new Size(113, 22);
-            aboutToolStripMenuItem1.Text = "&Sobre...";
-            aboutToolStripMenuItem1.Click += aboutToolStripMenuItem1_Click;
+            aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            aboutToolStripMenuItem.Size = new Size(180, 22);
+            aboutToolStripMenuItem.Text = "&Sobre...";
+            aboutToolStripMenuItem.Click += aboutToolStripMenuItem1_Click;
             // 
             // MainForm
             // 
@@ -119,16 +119,16 @@
             Controls.Add(retrievePacientButton);
             Controls.Add(createPacientButton);
             Controls.Add(pacientListBox);
-            Controls.Add(menuStrip1);
+            Controls.Add(menuStrip);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            MainMenuStrip = menuStrip1;
-            Margin = new Padding(5, 5, 5, 5);
+            MainMenuStrip = menuStrip;
+            Margin = new Padding(5);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "ProntuarioXpress";
             Load += MainForm_Load;
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
+            menuStrip.ResumeLayout(false);
+            menuStrip.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -139,8 +139,8 @@
         private Button createPacientButton;
         private Button retrievePacientButton;
         private Button deletePacientButton;
-        private MenuStrip menuStrip1;
-        private ToolStripMenuItem sobreToolStripMenuItem;
-        private ToolStripMenuItem aboutToolStripMenuItem1;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem;
     }
 }

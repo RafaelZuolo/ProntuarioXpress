@@ -1,5 +1,4 @@
-﻿using Core.Model;
-using Core.Utils;
+﻿using Core.Utils;
 using UI.ViewItems;
 
 namespace UI;
@@ -11,6 +10,7 @@ public partial class PacientForm : Form
     public EventHandler<PacientViewItem>? SaveEvent;
     public EventHandler? ShowExtraInfoEvent;
     public EventHandler<AppointmentViewItem>? OpenAppointmentEvent;
+    public EventHandler? NewAppointmentEvent;
     public FormClosingEventHandler? CloseEvent;
 
     public PacientForm()
@@ -49,12 +49,13 @@ public partial class PacientForm : Form
         ageTextBox.Text = pacient.BirthDate.GetAge().ToString();
         appointmentsListBox.BeginUpdate();
         appointmentsListBox.Items.Clear();
-        foreach (var appointment in pacient.Appointments)
+        foreach (var appointment in pacient.Appointments.OrderByDescending(a => a.Date))
         {
             appointmentsListBox.Items.Add(appointment);
         }
         appointmentsListBox.EndUpdate();
         openAppointMentButton.Enabled = false;
+        newAppointmentButton.Enabled = !string.IsNullOrWhiteSpace(pacient.Id);
 
         saveButton.Text = string.IsNullOrEmpty(pacient.Id) ? "Criar" : "Atualizar";
     }
@@ -85,5 +86,15 @@ public partial class PacientForm : Form
     private void appointmentsListBox_DoubleClick(object sender, EventArgs e)
     {
         OpenAppointmentEvent?.Invoke(sender, pacientViewItem.Appointments[appointmentsListBox.SelectedIndex]);
+    }
+
+    public void SetStatusStripLabel(string text)
+    {
+        toolStripStatusLabel.Text = text;
+    }
+
+    private void newAppointmentBtton_Click(object sender, EventArgs e)
+    {
+        NewAppointmentEvent?.Invoke(sender, e);
     }
 }

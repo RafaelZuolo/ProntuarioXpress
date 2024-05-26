@@ -16,5 +16,20 @@ namespace UI
         {
             InitializeComponent();
         }
+
+        private void AppointmentForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ammountDueNumericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
