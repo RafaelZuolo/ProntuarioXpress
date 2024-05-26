@@ -31,13 +31,13 @@ internal static class Program
                 Id = Guid.NewGuid().ToString(),
                 Appointments = appointmentSeeded.ToArray(),
             },
-            new("Beltrano de Tal", "54321", DateTime.Today.AddYears(-80))
+            new("Beltrano Beltroso", "54321", DateTime.Today.AddYears(-80))
             {
                 Address = "rua de Beltrano, 600",
                 Id = Guid.NewGuid().ToString(),
                 Appointments = appointmentSeeded.ToArray(),
             },
-            new("Ciclano Bicicla", "0001", DateTime.Today.AddYears(-5))
+            new("Ciclano Ciclado", "0001", DateTime.Today.AddYears(-5))
             {
                 Address = "av Ciclano, 8",
                 Id = Guid.NewGuid().ToString(),

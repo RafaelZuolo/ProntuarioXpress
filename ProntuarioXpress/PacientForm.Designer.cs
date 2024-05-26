@@ -48,9 +48,10 @@
             // saveButton
             // 
             saveButton.Cursor = Cursors.Hand;
-            saveButton.Location = new Point(29, 143);
+            saveButton.Location = new Point(46, 238);
+            saveButton.Margin = new Padding(5, 5, 5, 5);
             saveButton.Name = "saveButton";
-            saveButton.Size = new Size(100, 23);
+            saveButton.Size = new Size(157, 38);
             saveButton.TabIndex = 2;
             saveButton.Text = "Salvar";
             saveButton.UseVisualStyleBackColor = true;
@@ -58,32 +59,36 @@
             // 
             // nameLabel
             // 
-            nameLabel.Location = new Point(9, 15);
+            nameLabel.Location = new Point(14, 25);
+            nameLabel.Margin = new Padding(5, 0, 5, 0);
             nameLabel.Name = "nameLabel";
-            nameLabel.Size = new Size(120, 15);
+            nameLabel.Size = new Size(189, 25);
             nameLabel.TabIndex = 3;
             nameLabel.Text = "Nome :";
             nameLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // nameTextBox
             // 
-            nameTextBox.Location = new Point(133, 12);
+            nameTextBox.Location = new Point(209, 20);
+            nameTextBox.Margin = new Padding(5, 5, 5, 5);
             nameTextBox.Name = "nameTextBox";
-            nameTextBox.Size = new Size(200, 23);
+            nameTextBox.Size = new Size(312, 33);
             nameTextBox.TabIndex = 4;
             // 
             // cpfTextBox
             // 
-            cpfTextBox.Location = new Point(133, 41);
+            cpfTextBox.Location = new Point(209, 68);
+            cpfTextBox.Margin = new Padding(5, 5, 5, 5);
             cpfTextBox.Name = "cpfTextBox";
-            cpfTextBox.Size = new Size(200, 23);
+            cpfTextBox.Size = new Size(312, 33);
             cpfTextBox.TabIndex = 6;
             // 
             // cpfLabel
             // 
-            cpfLabel.Location = new Point(12, 44);
+            cpfLabel.Location = new Point(15, 71);
+            cpfLabel.Margin = new Padding(5, 0, 5, 0);
             cpfLabel.Name = "cpfLabel";
-            cpfLabel.Size = new Size(120, 15);
+            cpfLabel.Size = new Size(189, 25);
             cpfLabel.TabIndex = 5;
             cpfLabel.Text = "CPF :";
             cpfLabel.TextAlign = ContentAlignment.MiddleRight;
@@ -91,9 +96,10 @@
             // birthDateLabel
             // 
             birthDateLabel.AutoSize = true;
-            birthDateLabel.Location = new Point(11, 76);
+            birthDateLabel.Location = new Point(16, 123);
+            birthDateLabel.Margin = new Padding(5, 0, 5, 0);
             birthDateLabel.Name = "birthDateLabel";
-            birthDateLabel.Size = new Size(118, 15);
+            birthDateLabel.Size = new Size(188, 25);
             birthDateLabel.TabIndex = 7;
             birthDateLabel.Text = "Data de nascimento :";
             birthDateLabel.TextAlign = ContentAlignment.MiddleRight;
@@ -101,18 +107,21 @@
             // birthdayDateTimePicker
             // 
             birthdayDateTimePicker.Format = DateTimePickerFormat.Short;
-            birthdayDateTimePicker.Location = new Point(133, 70);
+            birthdayDateTimePicker.Location = new Point(209, 117);
+            birthdayDateTimePicker.Margin = new Padding(5, 5, 5, 5);
             birthdayDateTimePicker.Name = "birthdayDateTimePicker";
-            birthdayDateTimePicker.Size = new Size(200, 23);
+            birthdayDateTimePicker.RightToLeft = RightToLeft.No;
+            birthdayDateTimePicker.Size = new Size(312, 33);
             birthdayDateTimePicker.TabIndex = 8;
             birthdayDateTimePicker.ValueChanged += birthdayDateTimePicker_ValueChanged;
             // 
             // closelButton
             // 
             closelButton.Cursor = Cursors.Hand;
-            closelButton.Location = new Point(135, 143);
+            closelButton.Location = new Point(212, 238);
+            closelButton.Margin = new Padding(5, 5, 5, 5);
             closelButton.Name = "closelButton";
-            closelButton.Size = new Size(100, 23);
+            closelButton.Size = new Size(157, 38);
             closelButton.TabIndex = 9;
             closelButton.Text = "Fechar";
             closelButton.UseVisualStyleBackColor = true;
@@ -120,37 +129,41 @@
             // 
             // ageLabel
             // 
-            ageLabel.Location = new Point(9, 102);
+            ageLabel.Location = new Point(14, 170);
+            ageLabel.Margin = new Padding(5, 0, 5, 0);
             ageLabel.Name = "ageLabel";
-            ageLabel.Size = new Size(120, 15);
+            ageLabel.Size = new Size(189, 25);
             ageLabel.TabIndex = 10;
             ageLabel.Text = "Idade :";
             ageLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
             // ageTextBox
             // 
-            ageTextBox.Location = new Point(133, 99);
+            ageTextBox.Location = new Point(209, 165);
+            ageTextBox.Margin = new Padding(5, 5, 5, 5);
             ageTextBox.Name = "ageTextBox";
             ageTextBox.ReadOnly = true;
-            ageTextBox.Size = new Size(200, 23);
+            ageTextBox.Size = new Size(312, 33);
             ageTextBox.TabIndex = 11;
             // 
             // appointmentsListBox
             // 
             appointmentsListBox.FormattingEnabled = true;
-            appointmentsListBox.ItemHeight = 15;
-            appointmentsListBox.Location = new Point(350, 41);
+            appointmentsListBox.ItemHeight = 25;
+            appointmentsListBox.Location = new Point(550, 68);
+            appointmentsListBox.Margin = new Padding(5, 5, 5, 5);
             appointmentsListBox.Name = "appointmentsListBox";
-            appointmentsListBox.Size = new Size(244, 79);
+            appointmentsListBox.Size = new Size(381, 129);
             appointmentsListBox.TabIndex = 12;
             appointmentsListBox.SelectedIndexChanged += appointmentsListBox_SelectedIndexChanged;
             appointmentsListBox.DoubleClick += appointmentsListBox_DoubleClick;
             // 
             // appointmentsLabel
             // 
-            appointmentsLabel.Location = new Point(350, 15);
+            appointmentsLabel.Location = new Point(550, 25);
+            appointmentsLabel.Margin = new Padding(5, 0, 5, 0);
             appointmentsLabel.Name = "appointmentsLabel";
-            appointmentsLabel.Size = new Size(120, 15);
+            appointmentsLabel.Size = new Size(189, 25);
             appointmentsLabel.TabIndex = 13;
             appointmentsLabel.Text = "Sessões realizadas:";
             appointmentsLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -158,9 +171,10 @@
             // pacientExtraInfoButton
             // 
             pacientExtraInfoButton.Cursor = Cursors.Hand;
-            pacientExtraInfoButton.Location = new Point(241, 143);
+            pacientExtraInfoButton.Location = new Point(379, 238);
+            pacientExtraInfoButton.Margin = new Padding(5, 5, 5, 5);
             pacientExtraInfoButton.Name = "pacientExtraInfoButton";
-            pacientExtraInfoButton.Size = new Size(100, 23);
+            pacientExtraInfoButton.Size = new Size(157, 38);
             pacientExtraInfoButton.TabIndex = 14;
             pacientExtraInfoButton.Text = "Informações";
             pacientExtraInfoButton.UseVisualStyleBackColor = true;
@@ -169,9 +183,10 @@
             // openAppointMentButton
             // 
             openAppointMentButton.Cursor = Cursors.Hand;
-            openAppointMentButton.Location = new Point(494, 141);
+            openAppointMentButton.Location = new Point(776, 235);
+            openAppointMentButton.Margin = new Padding(5, 5, 5, 5);
             openAppointMentButton.Name = "openAppointMentButton";
-            openAppointMentButton.Size = new Size(100, 23);
+            openAppointMentButton.Size = new Size(157, 38);
             openAppointMentButton.TabIndex = 15;
             openAppointMentButton.Text = "Abrir Sessão";
             openAppointMentButton.UseVisualStyleBackColor = true;
@@ -180,18 +195,19 @@
             // newAppointmentBtton
             // 
             newAppointmentBtton.Cursor = Cursors.Hand;
-            newAppointmentBtton.Location = new Point(388, 141);
+            newAppointmentBtton.Location = new Point(610, 235);
+            newAppointmentBtton.Margin = new Padding(5, 5, 5, 5);
             newAppointmentBtton.Name = "newAppointmentBtton";
-            newAppointmentBtton.Size = new Size(100, 23);
+            newAppointmentBtton.Size = new Size(157, 38);
             newAppointmentBtton.TabIndex = 16;
             newAppointmentBtton.Text = "Nova Sessão";
             newAppointmentBtton.UseVisualStyleBackColor = true;
             // 
             // PacientForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(604, 176);
+            ClientSize = new Size(949, 293);
             Controls.Add(newAppointmentBtton);
             Controls.Add(openAppointMentButton);
             Controls.Add(pacientExtraInfoButton);
@@ -207,6 +223,8 @@
             Controls.Add(nameTextBox);
             Controls.Add(nameLabel);
             Controls.Add(saveButton);
+            Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "PacientForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Paciente";
