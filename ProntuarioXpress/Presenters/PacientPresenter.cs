@@ -1,8 +1,8 @@
 ﻿using Application;
 using Core.Model;
-using UI.ViewItem;
+using UI.ViewItems;
 
-namespace UI.Presenter;
+namespace UI.Presenters;
 
 public class PacientPresenter
 {

@@ -1,4 +1,4 @@
-﻿namespace UI.Presenter;
+﻿namespace UI.Presenters;
 
 public class AppointmentPresenter
 {

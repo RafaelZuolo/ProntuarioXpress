@@ -1,7 +1,7 @@
 ﻿using Core.Model;
 using Core.Utils;
 
-namespace UI.ViewItem;
+namespace UI.ViewItems;
 
 public class PacientListItemViewItem(string id, string name, string cpf, int age)
 {

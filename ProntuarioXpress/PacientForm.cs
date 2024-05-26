@@ -1,6 +1,6 @@
 ﻿using Core.Model;
 using Core.Utils;
-using UI.ViewItem;
+using UI.ViewItems;
 
 namespace UI;
 

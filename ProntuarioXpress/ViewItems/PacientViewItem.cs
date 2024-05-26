@@ -1,6 +1,6 @@
 ﻿using Core.Model;
 
-namespace UI.ViewItem;
+namespace UI.ViewItems;
 
 public class PacientViewItem
 {
