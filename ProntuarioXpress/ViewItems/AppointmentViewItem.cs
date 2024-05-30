@@ -18,7 +18,7 @@ public class AppointmentViewItem
 
     public override string? ToString()
     {
-        return $"{Date} {Date.DayOfWeek}";
+        return $"{Date.DayOfWeek}, {Date}";
     }
 
     public static AppointmentViewItem FromModel(Appointment appointment)
@@ -31,6 +31,15 @@ public class AppointmentViewItem
             PayDay = appointment.Billing?.PayDay,
             WasBilled = appointment.WasBilled,
             WasPaid = appointment.WasPaid,
+        };
+    }
+
+    public Appointment ToModel()
+    {
+        return new Appointment(Date)
+        {
+            Id = Id,
+            //Billing = check how we will retrieve billing
         };
     }
 }

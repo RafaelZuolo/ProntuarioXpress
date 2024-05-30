@@ -17,6 +17,6 @@ public class PacientListItemViewItem(string id, string name, string cpf, int age
 
     public static PacientListItemViewItem FromPacient(Pacient pacient)
     {
-        return new PacientListItemViewItem(pacient.Id, pacient.FullName, pacient.CPF, pacient.BirthDate.GetAge());
+        return new PacientListItemViewItem(pacient.Id, pacient.FullName, pacient.CPF, pacient.BirthDate.GetYearsFromToday());
     }
 }

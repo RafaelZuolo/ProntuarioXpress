@@ -1,11 +1,11 @@
-﻿using Core.Utils;
-using UI.ViewItems;
+﻿using UI.ViewItems;
 
 namespace UI;
 
 public partial class PacientForm : Form
 {
-    private PacientViewItem pacientViewItem;
+    private PacientViewItem pacientViewItem => pacientViewItemBindingSource.DataSource as PacientViewItem 
+        ?? throw new Exception("viewItem was null");
 
     public EventHandler<PacientViewItem>? SaveEvent;
     public EventHandler? ShowExtraInfoEvent;
@@ -13,10 +13,12 @@ public partial class PacientForm : Form
     public EventHandler? NewAppointmentEvent;
     public FormClosingEventHandler? CloseEvent;
 
+    public BindingSource PacientViewItemBindingSource => pacientViewItemBindingSource;
+
     public PacientForm()
     {
         InitializeComponent();
-        pacientViewItem = new();
+        pacientViewItemBindingSource.DataSource = new();
     }
 
     private void openAppointmentButton_Click(object sender, EventArgs e)
@@ -36,35 +38,17 @@ public partial class PacientForm : Form
 
     private void saveButton_Click(object sender, EventArgs e)
     {
-        UpdatePacientInfo();
         SaveEvent?.Invoke(sender, pacientViewItem);
     }
 
     internal void InitWith(PacientViewItem pacient)
     {
-        pacientViewItem = pacient;
-        nameTextBox.Text = pacient.FullName;
-        birthdayDateTimePicker.Value = pacient.BirthDate;
-        cpfTextBox.Text = pacient.CPF;
-        ageTextBox.Text = pacient.BirthDate.GetAge().ToString();
-        appointmentsListBox.BeginUpdate();
-        appointmentsListBox.Items.Clear();
-        foreach (var appointment in pacient.Appointments.OrderByDescending(a => a.Date))
-        {
-            appointmentsListBox.Items.Add(appointment);
-        }
-        appointmentsListBox.EndUpdate();
+        pacientViewItemBindingSource.DataSource = pacient;
+        appointmentsListBox.DataSource = pacient.Appointments;
         openAppointMentButton.Enabled = false;
         newAppointmentButton.Enabled = !string.IsNullOrWhiteSpace(pacient.Id);
 
         saveButton.Text = string.IsNullOrEmpty(pacient.Id) ? "Criar" : "Atualizar";
-    }
-
-    private void UpdatePacientInfo()
-    {
-        pacientViewItem.FullName = nameTextBox.Text;
-        pacientViewItem.BirthDate = birthdayDateTimePicker.Value;
-        pacientViewItem.CPF = cpfTextBox.Text;
     }
 
     private void appointmentsListBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,17 +58,13 @@ public partial class PacientForm : Form
 
     private void PacientForm_FormClosing(object sender, FormClosingEventArgs e)
     {
-        UpdatePacientInfo();
+        //UpdatePacientInfo();
         CloseEvent?.Invoke(sender, e);
-    }
-
-    private void birthdayDateTimePicker_ValueChanged(object sender, EventArgs e)
-    {
-        ageTextBox.Text = birthdayDateTimePicker.Value.GetAge().ToString();
     }
 
     private void appointmentsListBox_DoubleClick(object sender, EventArgs e)
     {
+        if (appointmentsListBox.SelectedIndex < 0) return;
         OpenAppointmentEvent?.Invoke(sender, pacientViewItem.Appointments[appointmentsListBox.SelectedIndex]);
     }
 

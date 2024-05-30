@@ -26,6 +26,7 @@ public class PacientPresenter
     {
         this.pacient = PacientViewItem.FromModel(pacient);
         form.InitWith(this.pacient);
+        //form.PacientViewItemBindingSource.DataSource = this.pacient;
     }
 
     public void SaveEvent(object? sender, PacientViewItem pacient)

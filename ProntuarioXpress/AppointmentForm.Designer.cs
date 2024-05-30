@@ -115,7 +115,7 @@
             // wasPaidCheckBox
             // 
             wasPaidCheckBox.AutoSize = true;
-            wasPaidCheckBox.Location = new Point(917, 15);
+            wasPaidCheckBox.Location = new Point(905, 78);
             wasPaidCheckBox.Name = "wasPaidCheckBox";
             wasPaidCheckBox.Size = new Size(113, 29);
             wasPaidCheckBox.TabIndex = 9;
