@@ -4,16 +4,16 @@ namespace UI.Presenters;
 
 public class AppointmentPresenter
 {
-    private AppointmentForm form;
+    private IAppointmentForm form;
     private AppointmentViewItem appointment = new();
 
-    public AppointmentPresenter(AppointmentForm form)
+    public AppointmentPresenter(IAppointmentForm form)
     {
         this.form = form;
     }
 
     internal void Show()
     {
-        form.Show();
+        form.ShowForm();
     }
 }

@@ -1,28 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace UI
+﻿namespace UI
 {
-    public partial class AppointmentForm : Form
+    public partial class AppointmentForm : Form, IAppointmentForm
     {
         public AppointmentForm()
         {
             InitializeComponent();
         }
 
-        private void AppointmentForm_Load(object sender, EventArgs e)
+        public void ShowForm()
         {
-
+            Show();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void AppointmentForm_Load(object sender, EventArgs e)
         {
 
         }
