@@ -6,12 +6,12 @@ namespace UI.Presenters;
 
 public class PacientPresenter
 {
-    private readonly PacientForm form;
+    private readonly IPacientForm form;
     private PacientViewItem pacient = new();
     private readonly IPacientService pacientService;
     public EventHandler? OnClose;
 
-    public PacientPresenter(PacientForm form, IPacientService pacientService)
+    public PacientPresenter(IPacientForm form, IPacientService pacientService)
     {
         this.form = form;
         this.pacientService = pacientService;
@@ -26,7 +26,6 @@ public class PacientPresenter
     {
         this.pacient = PacientViewItem.FromModel(pacient);
         form.InitWith(this.pacient);
-        //form.PacientViewItemBindingSource.DataSource = this.pacient;
     }
 
     public void SaveEvent(object? sender, PacientViewItem pacient)
@@ -97,6 +96,6 @@ public class PacientPresenter
 
     internal void Show()
     {
-        form.Show();
+        form.ShowForm();
     }
 }

@@ -2,23 +2,41 @@
 
 namespace UI;
 
-public partial class PacientForm : Form
+public partial class PacientForm : Form, IPacientForm
 {
-    private PacientViewItem pacientViewItem => pacientViewItemBindingSource.DataSource as PacientViewItem 
+    private PacientViewItem pacientViewItem => pacientViewItemBindingSource.DataSource as PacientViewItem
         ?? throw new Exception("viewItem was null");
 
-    public EventHandler<PacientViewItem>? SaveEvent;
-    public EventHandler? ShowExtraInfoEvent;
-    public EventHandler<AppointmentViewItem>? OpenAppointmentEvent;
-    public EventHandler? NewAppointmentEvent;
-    public FormClosingEventHandler? CloseEvent;
-
-    public BindingSource PacientViewItemBindingSource => pacientViewItemBindingSource;
+    public EventHandler<PacientViewItem>? SaveEvent { get; set; }
+    public EventHandler? ShowExtraInfoEvent { get; set; }
+    public EventHandler<AppointmentViewItem>? OpenAppointmentEvent { get; set; }
+    public EventHandler? NewAppointmentEvent { get; set; }
+    public FormClosingEventHandler? CloseEvent { get; set; }
 
     public PacientForm()
     {
         InitializeComponent();
         pacientViewItemBindingSource.DataSource = new();
+    }
+
+    public void SetStatusStripLabel(string text)
+    {
+        toolStripStatusLabel.Text = text;
+    }
+
+    public void InitWith(PacientViewItem pacient)
+    {
+        pacientViewItemBindingSource.DataSource = pacient;
+        appointmentsListBox.DataSource = pacient.Appointments;
+        openAppointMentButton.Enabled = false;
+        newAppointmentButton.Enabled = !string.IsNullOrWhiteSpace(pacient.Id);
+
+        saveButton.Text = string.IsNullOrEmpty(pacient.Id) ? "Criar" : "Atualizar";
+    }
+
+    public void ShowForm()
+    {
+        Show();
     }
 
     private void openAppointmentButton_Click(object sender, EventArgs e)
@@ -41,16 +59,6 @@ public partial class PacientForm : Form
         SaveEvent?.Invoke(sender, pacientViewItem);
     }
 
-    internal void InitWith(PacientViewItem pacient)
-    {
-        pacientViewItemBindingSource.DataSource = pacient;
-        appointmentsListBox.DataSource = pacient.Appointments;
-        openAppointMentButton.Enabled = false;
-        newAppointmentButton.Enabled = !string.IsNullOrWhiteSpace(pacient.Id);
-
-        saveButton.Text = string.IsNullOrEmpty(pacient.Id) ? "Criar" : "Atualizar";
-    }
-
     private void appointmentsListBox_SelectedIndexChanged(object sender, EventArgs e)
     {
         openAppointMentButton.Enabled = appointmentsListBox.SelectedItem != null;
@@ -58,7 +66,6 @@ public partial class PacientForm : Form
 
     private void PacientForm_FormClosing(object sender, FormClosingEventArgs e)
     {
-        //UpdatePacientInfo();
         CloseEvent?.Invoke(sender, e);
     }
 
@@ -66,11 +73,6 @@ public partial class PacientForm : Form
     {
         if (appointmentsListBox.SelectedIndex < 0) return;
         OpenAppointmentEvent?.Invoke(sender, pacientViewItem.Appointments[appointmentsListBox.SelectedIndex]);
-    }
-
-    public void SetStatusStripLabel(string text)
-    {
-        toolStripStatusLabel.Text = text;
     }
 
     private void newAppointmentBtton_Click(object sender, EventArgs e)
