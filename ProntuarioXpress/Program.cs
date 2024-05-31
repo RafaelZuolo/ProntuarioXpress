@@ -46,6 +46,6 @@ internal static class Program
         };
         var mainForm = new MainForm();
         var mainPresenter = new MainPresenter(mainForm, new PacientService(pacientSeeded));
-        System.Windows.Forms.Application.Run(mainPresenter.Form);
+        System.Windows.Forms.Application.Run((Form)mainPresenter.Form);
     }
 }

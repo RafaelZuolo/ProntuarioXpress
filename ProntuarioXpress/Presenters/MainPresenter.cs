@@ -6,11 +6,11 @@ namespace UI.Presenters;
 
 public class MainPresenter
 {
-    private readonly MainForm mainForm;
+    private readonly IMainForm mainForm;
     private readonly IPacientService pacientService;
-    public Form Form => mainForm;
+    public IMainForm Form => mainForm;
 
-    public MainPresenter(MainForm mainForm, IPacientService pacientService)
+    public MainPresenter(IMainForm mainForm, IPacientService pacientService)
     {
         this.mainForm = mainForm;
         this.pacientService = pacientService;
@@ -27,7 +27,7 @@ public class MainPresenter
         pacientPresenter.OnClose += MainFormLoadEvent;
         pacientPresenter.InitWith(new Pacient(string.Empty, string.Empty, DateTime.Today));
         pacientPresenter.Show();
-        mainForm.Enabled = false;
+        mainForm.SetEnabled(false);
     }
 
     private void RetrievePacientEvent(object? sender, string id)
@@ -39,7 +39,7 @@ public class MainPresenter
         var pacient = pacientService.GetPacient(id);
         pacientPresenter.InitWith(pacient);
         pacientPresenter.Show();
-        mainForm.Enabled = false;
+        mainForm.SetEnabled(false);
     }
 
     private void DeletePacientEvent(object? sender, string id)
@@ -54,6 +54,6 @@ public class MainPresenter
             .SearchPacients()
             .Select(PacientListItemViewItem.FromPacient)
             .ToList());
-        mainForm.Enabled = true;
+        mainForm.SetEnabled(true);
     }
 }

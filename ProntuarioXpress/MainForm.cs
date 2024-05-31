@@ -1,81 +1,85 @@
 using UI.ViewItems;
 
-namespace UI
+namespace UI;
+
+public partial class MainForm : Form, IMainForm
 {
-    public partial class MainForm : Form
+    public EventHandler? CreatePacientEvent { get; set; }
+    public EventHandler<string>? RetrievePacientEvent { get; set; }
+    public EventHandler<string>? DeletePacientEvent { get; set; }
+    public EventHandler? MainFormLoadEvent { get; set; }
+
+    private ICollection<PacientListItemViewItem> pacients = [];
+
+    public MainForm()
     {
-        public EventHandler? CreatePacientEvent;
-        public EventHandler<string>? RetrievePacientEvent;
-        public EventHandler<string>? DeletePacientEvent;
-        public EventHandler? MainFormLoadEvent;
+        InitializeComponent();
+    }
 
-        private ICollection<PacientListItemViewItem> pacients = [];
+    public void SetEnabled(bool enabled)
+    {
+        Enabled = enabled;
+    }
 
-        public MainForm()
+    public void LoadPacientList(ICollection<PacientListItemViewItem> pacients)
+    {
+        this.pacients = pacients;
+        pacientListBox.BeginUpdate();
+        pacientListBox.Items.Clear();
+
+        foreach (var item in this.pacients)
         {
-            InitializeComponent();
+            pacientListBox.Items.Add(item);
         }
 
-        public void LoadPacientList(ICollection<PacientListItemViewItem> pacients)
+        pacientListBox.SelectedItem = null;
+        pacientListBox.EndUpdate();
+        retrievePacientButton.Enabled = false;
+        deletePacientButton.Enabled = false;
+    }
+
+    private void createPacientButton_Click(object sender, EventArgs e)
+    {
+        CreatePacientEvent?.Invoke(sender, EventArgs.Empty);
+    }
+
+    private void retrievePacientButton_Click(object sender, EventArgs e)
+    {
+        var id = (pacientListBox.SelectedItem as PacientListItemViewItem)?.Id;
+        if (id is not null)
         {
-            this.pacients = pacients;
-            pacientListBox.BeginUpdate();
-            pacientListBox.Items.Clear();
-
-            foreach (var item in this.pacients)
-            {
-                pacientListBox.Items.Add(item);
-            }
-
-            pacientListBox.SelectedItem = null;
-            pacientListBox.EndUpdate();
-            retrievePacientButton.Enabled = false;
-            deletePacientButton.Enabled = false;
+            RetrievePacientEvent?.Invoke(sender, id);
         }
+    }
 
-        private void createPacientButton_Click(object sender, EventArgs e)
+    private void deletePacientButton_Click(object sender, EventArgs e)
+    {
+        var id = (pacientListBox.SelectedItem as PacientListItemViewItem)?.Id;
+        if (id is not null)
         {
-            CreatePacientEvent?.Invoke(sender, EventArgs.Empty);
+            DeletePacientEvent?.Invoke(sender, id);
         }
+    }
 
-        private void retrievePacientButton_Click(object sender, EventArgs e)
-        {
-            var id = (pacientListBox.SelectedItem as PacientListItemViewItem)?.Id;
-            if (id is not null)
-            {
-                RetrievePacientEvent?.Invoke(sender, id);
-            }
-        }
+    private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+        MessageBox.Show("Criado por Rafael", "Sobre...");
+    }
 
-        private void deletePacientButton_Click(object sender, EventArgs e)
-        {
-            var id = (pacientListBox.SelectedItem as PacientListItemViewItem)?.Id;
-            if (id is not null)
-            {
-                DeletePacientEvent?.Invoke(sender, id);
-            }
-        }
+    private void MainForm_Load(object sender, EventArgs e)
+    {
+        pacientListBox.SelectionMode = SelectionMode.One;
+        MainFormLoadEvent?.Invoke(sender, EventArgs.Empty);
+    }
 
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Criado por Rafael", "Sobre...");
-        }
+    private void pacientListBox_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        retrievePacientButton.Enabled = pacientListBox.SelectedItem is not null;
+        deletePacientButton.Enabled = pacientListBox.SelectedItem is not null;
+    }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            pacientListBox.SelectionMode = SelectionMode.One;
-            MainFormLoadEvent?.Invoke(sender, EventArgs.Empty);
-        }
-
-        private void pacientListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            retrievePacientButton.Enabled = pacientListBox.SelectedItem is not null;
-            deletePacientButton.Enabled = pacientListBox.SelectedItem is not null;
-        }
-
-        private void pacientListBox_DoubleClick(object sender, EventArgs e)
-        {
-            retrievePacientButton_Click(sender, e);
-        }
+    private void pacientListBox_DoubleClick(object sender, EventArgs e)
+    {
+        retrievePacientButton_Click(sender, e);
     }
 }
