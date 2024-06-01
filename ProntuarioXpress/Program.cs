@@ -1,15 +1,15 @@
 using Application;
-using Core.Model;
-using UI.Presenters;
-using Persistence;
+using Application.API;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Application.API;
+using Persistence;
+using UI.Presenters;
 
 namespace UI;
 
 internal static class Program
 {
+    public static IServiceProvider ServiceProvider { get; private set; }
     /// <summary>
     ///  The main entry point for the application.
     /// </summary>
@@ -30,43 +30,46 @@ internal static class Program
 
         using IHost host = builder.Build();
 
-        var appointmentSeeded = new List<Appointment>
-        {
-            new(DateTime.Now),
-            new(DateTime.Now.AddDays(-5)),
-            new(DateTime.Now.AddHours(-2)),
-        };
+        ServiceProvider = host.Services;
 
-        var pacientSeeded = new HashSet<Pacient>
-        {
-            new("Fulano de Tal", "01234", DateTime.Today.AddYears(-20))
-            {
-                Address = "rua de fulano, 500",
-                Id = Guid.NewGuid().ToString(),
-                Appointments = appointmentSeeded.ToArray(),
-            },
-            new("Beltrano Beltroso", "54321", DateTime.Today.AddYears(-80))
-            {
-                Address = "rua de Beltrano, 600",
-                Id = Guid.NewGuid().ToString(),
-                Appointments = appointmentSeeded.ToArray(),
-            },
-            new("Ciclano Ciclado", "0001", DateTime.Today.AddYears(-5))
-            {
-                Address = "av Ciclano, 8",
-                Id = Guid.NewGuid().ToString(),
-                Appointments = appointmentSeeded.ToArray(),
-            },
-        };
+        //var appointmentSeeded = new List<Appointment>
+        //{
+        //    new(DateTime.Now),
+        //    new(DateTime.Now.AddDays(-5)),
+        //    new(DateTime.Now.AddHours(-2)),
+        //};
 
-        var repo = new PacientRepository();
-        foreach (var p in pacientSeeded)
-        {
-            repo.Upsert(p);
-        }
+        //var pacientSeeded = new HashSet<Pacient>
+        //{
+        //    new("Fulano de Tal", "01234", DateTime.Today.AddYears(-20))
+        //    {
+        //        Address = "rua de fulano, 500",
+        //        Id = Guid.NewGuid().ToString(),
+        //        Appointments = appointmentSeeded.ToArray(),
+        //    },
+        //    new("Beltrano Beltroso", "54321", DateTime.Today.AddYears(-80))
+        //    {
+        //        Address = "rua de Beltrano, 600",
+        //        Id = Guid.NewGuid().ToString(),
+        //        Appointments = appointmentSeeded.ToArray(),
+        //    },
+        //    new("Ciclano Ciclado", "0001", DateTime.Today.AddYears(-5))
+        //    {
+        //        Address = "av Ciclano, 8",
+        //        Id = Guid.NewGuid().ToString(),
+        //        Appointments = appointmentSeeded.ToArray(),
+        //    },
+        //};
 
-        var mainForm = new MainForm();
-        var mainPresenter = new MainPresenter(mainForm, new PacientService(repo));
+        //var repo = new PacientRepository();
+        //foreach (var p in pacientSeeded)
+        //{
+        //    repo.Upsert(p);
+        //}
+
+        var mainPresenter = new MainPresenter(
+            ServiceProvider.GetRequiredService<IMainForm>(),
+            ServiceProvider.GetRequiredService<IPacientService>());
         System.Windows.Forms.Application.Run((Form)mainPresenter.Form);
     }
 }

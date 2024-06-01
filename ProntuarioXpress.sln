@@ -17,6 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\
 		{F48F9D66-93EC-44D6-9C50-E1847CB569F0} = {F48F9D66-93EC-44D6-9C50-E1847CB569F0}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationTests", "ApplicationTests\ApplicationTests.csproj", "{610DF669-8199-4795-A307-A266D4E552CC}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F48F9D66-93EC-44D6-9C50-E1847CB569F0} = {F48F9D66-93EC-44D6-9C50-E1847CB569F0}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +44,10 @@ Global
 		{A59635C6-C2AF-41F0-8A6C-F56630EAC2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A59635C6-C2AF-41F0-8A6C-F56630EAC2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A59635C6-C2AF-41F0-8A6C-F56630EAC2A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{610DF669-8199-4795-A307-A266D4E552CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{610DF669-8199-4795-A307-A266D4E552CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{610DF669-8199-4795-A307-A266D4E552CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{610DF669-8199-4795-A307-A266D4E552CC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

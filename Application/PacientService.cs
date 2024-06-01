@@ -12,7 +12,8 @@ public class PacientService(IPacientRepository repository) : IPacientService
 
     public Pacient UpdatePacient(Pacient pacient)
     {
-        if (string.IsNullOrEmpty(pacient.Id)) throw new Exception($"Id cannot be null when updating {nameof(Pacient)}"); 
+        if (string.IsNullOrWhiteSpace(pacient.Id)) throw new Exception($"Id cannot be null when updating {nameof(Pacient)}");
+
         return repository.Upsert(pacient);
     }
 

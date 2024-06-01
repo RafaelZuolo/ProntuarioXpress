@@ -2,7 +2,7 @@
 
 namespace UI.Presenters;
 
-public class AppointmentPresenter
+public class AppointmentPresenter : IAppointmentPresenter
 {
     private IAppointmentForm form;
     private AppointmentViewItem appointment = new();

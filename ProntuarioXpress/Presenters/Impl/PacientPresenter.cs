@@ -4,7 +4,7 @@ using UI.ViewItems;
 
 namespace UI.Presenters;
 
-public class PacientPresenter
+public class PacientPresenter : IPacientPresenter
 {
     private readonly IPacientForm form;
     private PacientViewItem pacient = new();

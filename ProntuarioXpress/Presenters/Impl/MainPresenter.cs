@@ -4,7 +4,7 @@ using UI.ViewItems;
 
 namespace UI.Presenters;
 
-public class MainPresenter
+public class MainPresenter : IMainPresenter
 {
     private readonly IMainForm mainForm;
     private readonly IPacientService pacientService;
@@ -22,7 +22,8 @@ public class MainPresenter
 
     private void CreatePacientEvent(object? sender, EventArgs e)
     {
-        var pacientForm = new PacientForm();
+        var pacientForm = Program.ServiceProvider.GetService(typeof(IPacientForm)) as IPacientForm
+            ?? throw new Exception("form was null");
         var pacientPresenter = new PacientPresenter(pacientForm, pacientService);
         pacientPresenter.OnClose += MainFormLoadEvent;
         pacientPresenter.InitWith(new Pacient(string.Empty, string.Empty, DateTime.Today));
