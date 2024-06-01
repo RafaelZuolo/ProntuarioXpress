@@ -1,45 +1,33 @@
-﻿using Core.Model;
+﻿using Application.API;
+using Core.Model;
 
 namespace Application;
 
-public class PacientService(ICollection<Pacient> pacientRecords) : IPacientService
+public class PacientService(IPacientRepository repository) : IPacientService
 {
-    private readonly ICollection<Pacient> pacientRecords = pacientRecords;
-
     public Pacient CreatePacient(string name, string cpf, DateTime birthDate)
     {
-        var pacient = new Pacient(name, cpf, birthDate)
-        {
-            Id = Guid.NewGuid().ToString(),
-        };
-        pacientRecords.Add(pacient);
-
-        return pacient;
+        return repository.Upsert(new Pacient(name, cpf, birthDate));
     }
 
-    public void UpdatePacient(string id, Pacient pacient)
+    public Pacient UpdatePacient(Pacient pacient)
     {
-        var oldPacient = pacientRecords.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Not found");
-        pacientRecords.Remove(oldPacient);
-        pacientRecords.Add(pacient with { Id = id });
+        if (string.IsNullOrEmpty(pacient.Id)) throw new Exception($"Id cannot be null when updating {nameof(Pacient)}"); 
+        return repository.Upsert(pacient);
     }
 
     public Pacient GetPacient(string id)
     {
-        return pacientRecords.FirstOrDefault(p => p.Id == id) ?? throw new Exception("Not found");
+        return repository.Get(id);
     }
 
-    public void DeletePacient(string id)
+    public bool DeletePacient(string id)
     {
-        var pacient = pacientRecords.FirstOrDefault(p => p.Id == id);
-        if (pacient is not default(Pacient))
-        {
-            pacientRecords.Remove(pacient);
-        }
+        return repository.Remove(id);
     }
 
-    public IList<Pacient> SearchPacients()
+    public IList<Pacient> GetAllPacients()
     {
-        return pacientRecords.ToList();
+        return repository.GetAll();
     }
 }

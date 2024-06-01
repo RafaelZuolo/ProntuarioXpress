@@ -42,7 +42,7 @@ public class PacientPresenter
             }
             else
             {
-                pacientService.UpdatePacient(pacient.Id, pacient.ToModel());
+                pacientService.UpdatePacient(pacient.ToModel());
                 form.SetStatusStripLabel("Paciente atualizado com sucesso");
             }
         }

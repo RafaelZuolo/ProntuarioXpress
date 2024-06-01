@@ -1,6 +1,10 @@
 using Application;
 using Core.Model;
 using UI.Presenters;
+using Persistence;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Application.API;
 
 namespace UI;
 
@@ -15,6 +19,16 @@ internal static class Program
         // To customize application configuration such as set high DPI settings or default font,
         // see https://aka.ms/applicationconfiguration.
         ApplicationConfiguration.Initialize();
+
+        HostApplicationBuilder builder = Host.CreateApplicationBuilder();
+
+        builder.Services.AddScoped<IMainForm, MainForm>();
+        builder.Services.AddScoped<IPacientForm, PacientForm>();
+        builder.Services.AddScoped<IAppointmentForm, AppointmentForm>();
+        builder.Services.AddSingleton<IPacientService, PacientService>();
+        builder.Services.AddSingleton<IPacientRepository, PacientRepository>();
+
+        using IHost host = builder.Build();
 
         var appointmentSeeded = new List<Appointment>
         {
@@ -44,8 +58,15 @@ internal static class Program
                 Appointments = appointmentSeeded.ToArray(),
             },
         };
+
+        var repo = new PacientRepository();
+        foreach (var p in pacientSeeded)
+        {
+            repo.Upsert(p);
+        }
+
         var mainForm = new MainForm();
-        var mainPresenter = new MainPresenter(mainForm, new PacientService(pacientSeeded));
+        var mainPresenter = new MainPresenter(mainForm, new PacientService(repo));
         System.Windows.Forms.Application.Run((Form)mainPresenter.Form);
     }
 }

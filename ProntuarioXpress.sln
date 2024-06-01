@@ -4,10 +4,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UI", "ProntuarioXpress\UI.csproj", "{F8329BB4-F78C-4A83-8251-AD25849E7353}"
+	ProjectSection(ProjectDependencies) = postProject
+		{A59635C6-C2AF-41F0-8A6C-F56630EAC2A7} = {A59635C6-C2AF-41F0-8A6C-F56630EAC2A7}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{AC034CEE-1DB2-4AFC-94DA-286510E4F75A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{F48F9D66-93EC-44D6-9C50-E1847CB569F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{F48F9D66-93EC-44D6-9C50-E1847CB569F0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{A59635C6-C2AF-41F0-8A6C-F56630EAC2A7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F48F9D66-93EC-44D6-9C50-E1847CB569F0} = {F48F9D66-93EC-44D6-9C50-E1847CB569F0}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +35,10 @@ Global
 		{F48F9D66-93EC-44D6-9C50-E1847CB569F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F48F9D66-93EC-44D6-9C50-E1847CB569F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F48F9D66-93EC-44D6-9C50-E1847CB569F0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A59635C6-C2AF-41F0-8A6C-F56630EAC2A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A59635C6-C2AF-41F0-8A6C-F56630EAC2A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A59635C6-C2AF-41F0-8A6C-F56630EAC2A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A59635C6-C2AF-41F0-8A6C-F56630EAC2A7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

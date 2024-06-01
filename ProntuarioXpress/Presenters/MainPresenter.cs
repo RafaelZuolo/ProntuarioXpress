@@ -51,7 +51,7 @@ public class MainPresenter
     private void MainFormLoadEvent(object? sender, EventArgs e)
     {
         mainForm.LoadPacientList(pacientService
-            .SearchPacients()
+            .GetAllPacients()
             .Select(PacientListItemViewItem.FromPacient)
             .ToList());
         mainForm.SetEnabled(true);
