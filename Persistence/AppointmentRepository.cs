@@ -3,7 +3,8 @@ using Core.Model;
 using Persistence.Entities;
 
 namespace Persistence;
-internal class AppointmentRepository : IAppointmentRepository
+
+public class AppointmentRepository : IAppointmentRepository
 {
     private readonly IDictionary<string, AppointmentEntity> appointmentById
         = new Dictionary<string, AppointmentEntity>();
@@ -15,22 +16,28 @@ internal class AppointmentRepository : IAppointmentRepository
         return Get(appointment.Id);
     }
 
-    public Appointment? Get(string id)
-    {
-        return appointmentById[id]?.ToModel();
-    }
+    public Appointment? Get(string id) => AppointmentEntity.ToModel(appointmentById[id]);
 
-    public ICollection<Appointment> GetFromPacient(string pacientId)
+    public IList<Appointment> GetFromPacient(string pacientId) => appointmentById.Values
+        .Where(a => a.PacientId == pacientId)
+        .Select(AppointmentEntity.ToModel)
+        .ToList();
+
+    public bool Remove(string id) => appointmentById.Remove(id);
+
+    public bool RemoveFromPacient(string pacientId)
     {
-        return appointmentById.Values
+        var appointmentIdsToRemove = appointmentById.Values
             .Where(a => a.PacientId == pacientId)
-            .Select(a => a.ToModel())
-            .ToList();
-    }
+            .Select(a => a.Id);
 
-    public bool Remove(string id)
-    {
-        return appointmentById.Remove(id);
+        var removedAll = true;
+        foreach (var id in appointmentIdsToRemove)
+        {
+            removedAll = removedAll && appointmentById.Remove(id);
+        }
+
+        return removedAll;
     }
 
     public Appointment? Update(Appointment appointment)

@@ -1,5 +1,7 @@
 using Application;
 using Application.API;
+using Application.Impl;
+using Core.Model;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Persistence;
@@ -26,7 +28,9 @@ internal static class Program
         builder.Services.AddTransient<IPacientForm, PacientForm>();
         builder.Services.AddTransient<IAppointmentForm, AppointmentForm>();
         builder.Services.AddSingleton<IPacientService, PacientService>();
+        builder.Services.AddSingleton<IAppointmentService, AppointmentService>();
         builder.Services.AddSingleton<IPacientRepository, PacientRepository>();
+        builder.Services.AddSingleton<IAppointmentRepository, AppointmentRepository>();
 
         using IHost host = builder.Build();
 

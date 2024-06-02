@@ -20,19 +20,21 @@ internal class AppointmentEntity
 
     public string Occurrences { get; set; } = string.Empty;
 
-    internal Appointment ToModel()
+    internal static Appointment ToModel(AppointmentEntity? entity)
     {
-        return new Appointment(Date)
+        if (entity == null) throw new Exception("Entity was null");
+        
+        return new Appointment(entity.Date)
         {
-            Id = Id,
-            ExtraInfos = ExtraInfos,
-            Occurrences = Occurrences,
-            Billing = AmmountDue is null
+            Id = entity.Id,
+            ExtraInfos = entity.ExtraInfos,
+            Occurrences = entity.Occurrences,
+            Billing = entity.AmmountDue is null
                 ? null
-                : new Billing(AmmountDue.Value)
+                : new Billing(entity.AmmountDue.Value)
                 {
-                    PayDay = PayDay,
-                    WasPaid = WasPaid,
+                    PayDay = entity.PayDay,
+                    WasPaid = entity.WasPaid,
                 },
         };
     }

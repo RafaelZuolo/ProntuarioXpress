@@ -3,7 +3,7 @@ using Core.Model;
 
 namespace Application.Impl;
 
-internal class AppointmentService : IAppointmentService
+public class AppointmentService : IAppointmentService
 {
     private readonly IAppointmentRepository repository;
 
