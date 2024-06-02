@@ -8,6 +8,8 @@ public record Appointment(DateTime Date)
 
     public string ExtraInfos { get; set; } = string.Empty;
 
+    public string Occurrences { get; set; } = string.Empty;
+
     public bool WasBilled { get => Billing is not null; }
 
     public bool WasPaid { get => Billing?.WasPaid ?? false; }

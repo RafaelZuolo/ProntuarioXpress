@@ -16,6 +16,10 @@ public class AppointmentViewItem
 
     public bool WasPaid { get; set; }
 
+    public string ExtraInfos { get; set; } = string.Empty;
+
+    public string Occurrences { get; set; } = string.Empty;
+
     public override string? ToString()
     {
         return $"{Date.DayOfWeek}, {Date}";
@@ -31,6 +35,8 @@ public class AppointmentViewItem
             PayDay = appointment.Billing?.PayDay,
             WasBilled = appointment.WasBilled,
             WasPaid = appointment.WasPaid,
+            ExtraInfos = appointment.ExtraInfos,
+            Occurrences = appointment.Occurrences,
         };
     }
 
@@ -39,6 +45,8 @@ public class AppointmentViewItem
         return new Appointment(Date)
         {
             Id = Id,
+            ExtraInfos = ExtraInfos,
+            Occurrences = Occurrences,
             //Billing = check how we will retrieve billing
         };
     }

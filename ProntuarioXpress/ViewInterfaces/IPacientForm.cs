@@ -9,6 +9,7 @@ public interface IPacientForm
     EventHandler<AppointmentViewItem>? OpenAppointmentEvent { get; set; }
     EventHandler<PacientViewItem>? SaveEvent { get; set; }
     EventHandler? ShowExtraInfoEvent { get; set; }
+    EventHandler? ExportAppointmentsEvent { get; set; }
 
     void InitWith(PacientViewItem pacient);
     void SetStatusStripLabel(string text);

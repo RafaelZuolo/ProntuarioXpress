@@ -12,6 +12,7 @@ public partial class PacientForm : Form, IPacientForm
     public EventHandler<AppointmentViewItem>? OpenAppointmentEvent { get; set; }
     public EventHandler? NewAppointmentEvent { get; set; }
     public FormClosingEventHandler? CloseEvent { get; set; }
+    public EventHandler? ExportAppointmentsEvent { get; set; }
 
     public PacientForm()
     {
@@ -78,5 +79,10 @@ public partial class PacientForm : Form, IPacientForm
     private void newAppointmentBtton_Click(object sender, EventArgs e)
     {
         NewAppointmentEvent?.Invoke(sender, e);
+    }
+
+    private void exportButton_Click(object sender, EventArgs e)
+    {
+        ExportAppointmentsEvent?.Invoke(sender, e);
     }
 }

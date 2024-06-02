@@ -1,25 +1,29 @@
-﻿namespace UI
+﻿namespace UI;
+
+public partial class AppointmentForm : Form, IAppointmentForm
 {
-    public partial class AppointmentForm : Form, IAppointmentForm
+    public AppointmentForm()
     {
-        public AppointmentForm()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+    }
 
-        public void ShowForm()
-        {
-            Show();
-        }
+    public void ShowForm()
+    {
+        Show();
+    }
 
-        private void AppointmentForm_Load(object sender, EventArgs e)
-        {
+    private void AppointmentForm_Load(object sender, EventArgs e)
+    {
 
-        }
+    }
 
-        private void ammountDueNumericUpDown_ValueChanged(object sender, EventArgs e)
-        {
+    private void ammountDueNumericUpDown_ValueChanged(object sender, EventArgs e)
+    {
 
-        }
+    }
+
+    private void extraInfoButton_Click(object sender, EventArgs e)
+    {
+
     }
 }
