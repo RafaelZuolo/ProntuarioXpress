@@ -9,8 +9,6 @@ public partial class MainForm : Form, IMainForm
     public EventHandler<string>? DeletePacientEvent { get; set; }
     public EventHandler? MainFormLoadEvent { get; set; }
 
-    private ICollection<PacientListItemViewItem> pacients = [];
-
     public MainForm()
     {
         InitializeComponent();
@@ -23,17 +21,8 @@ public partial class MainForm : Form, IMainForm
 
     public void LoadPacientList(ICollection<PacientListItemViewItem> pacients)
     {
-        this.pacients = pacients;
-        pacientListBox.BeginUpdate();
-        pacientListBox.Items.Clear();
-
-        foreach (var item in this.pacients)
-        {
-            pacientListBox.Items.Add(item);
-        }
-
-        pacientListBox.SelectedItem = null;
-        pacientListBox.EndUpdate();
+        pacientListBox.DataSource = pacients.ToList();
+        pacientListBox.SelectedIndex = -1;
         retrievePacientButton.Enabled = false;
         deletePacientButton.Enabled = false;
     }
@@ -68,7 +57,6 @@ public partial class MainForm : Form, IMainForm
 
     private void MainForm_Load(object sender, EventArgs e)
     {
-        pacientListBox.SelectionMode = SelectionMode.One;
         MainFormLoadEvent?.Invoke(sender, EventArgs.Empty);
     }
 

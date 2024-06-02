@@ -22,9 +22,9 @@ internal static class Program
 
         HostApplicationBuilder builder = Host.CreateApplicationBuilder();
 
-        builder.Services.AddScoped<IMainForm, MainForm>();
-        builder.Services.AddScoped<IPacientForm, PacientForm>();
-        builder.Services.AddScoped<IAppointmentForm, AppointmentForm>();
+        builder.Services.AddTransient<IMainForm, MainForm>();
+        builder.Services.AddTransient<IPacientForm, PacientForm>();
+        builder.Services.AddTransient<IAppointmentForm, AppointmentForm>();
         builder.Services.AddSingleton<IPacientService, PacientService>();
         builder.Services.AddSingleton<IPacientRepository, PacientRepository>();
 

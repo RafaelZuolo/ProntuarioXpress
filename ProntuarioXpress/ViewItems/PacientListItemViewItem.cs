@@ -3,20 +3,28 @@ using Core.Utils;
 
 namespace UI.ViewItems;
 
-public class PacientListItemViewItem(string id, string name, string cpf, int age)
+public class PacientListItemViewItem()
 {
-    public string Id { get; } = id;
-    public string Name { get; } = name;
-    public string Cpf { get; } = cpf;
-    public int Age { get; } = age;
+    public string Id { get; init; }
+    public string Name { get; init; }
+    public string Cpf { get; init; }
+    public int Age { get; init; }
+    public int AgeMonths { get; init; }
 
     public override string? ToString()
     {
-        return $"{Name} --- {Age} anos";
+        return $"{Name} --- {Age} anos e {AgeMonths} meses";
     }
 
     public static PacientListItemViewItem FromPacient(Pacient pacient)
     {
-        return new PacientListItemViewItem(pacient.Id, pacient.FullName, pacient.CPF, pacient.BirthDate.GetYearsFromToday());
+        return new PacientListItemViewItem
+        {
+            Id = pacient.Id,
+            Name = pacient.FullName,
+            Cpf = pacient.Cpf,
+            Age = pacient.BirthDate.GetYearsFromToday(),
+            AgeMonths = pacient.BirthDate.GetMonthsFromToday() % 12,
+        };
     }
 }

@@ -47,6 +47,7 @@
             pacientListBox.Margin = new Padding(5);
             pacientListBox.Name = "pacientListBox";
             pacientListBox.Size = new Size(552, 429);
+            pacientListBox.Sorted = true;
             pacientListBox.TabIndex = 0;
             pacientListBox.SelectedIndexChanged += pacientListBox_SelectedIndexChanged;
             pacientListBox.DoubleClick += pacientListBox_DoubleClick;
@@ -106,7 +107,7 @@
             // aboutToolStripMenuItem
             // 
             aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            aboutToolStripMenuItem.Size = new Size(180, 22);
+            aboutToolStripMenuItem.Size = new Size(113, 22);
             aboutToolStripMenuItem.Text = "&Sobre...";
             aboutToolStripMenuItem.Click += aboutToolStripMenuItem1_Click;
             // 

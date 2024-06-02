@@ -1,6 +1,6 @@
 ﻿namespace Core.Model;
 
-public record Pacient(string FullName, string CPF, DateTime BirthDate)
+public record Pacient(string FullName, string Cpf, DateTime BirthDate)
 {
     public string Id { get; init; } = string.Empty;
 

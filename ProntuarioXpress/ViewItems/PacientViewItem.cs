@@ -47,7 +47,7 @@ public class PacientViewItem : INotifyPropertyChanged
         return new PacientViewItem
         {
             FullName = pacient.FullName,
-            CPF = pacient.CPF,
+            CPF = pacient.Cpf,
             BirthDate = pacient.BirthDate,
             Id = pacient.Id,
             Address = pacient.Address,

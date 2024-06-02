@@ -4,6 +4,6 @@ namespace UITests.ViewItems;
 
 public class PacientViewItemTests
 {
-    [Fact]
-    public void LongAge_With
+    //[Fact]
+    //public void LongAge_With
 }
