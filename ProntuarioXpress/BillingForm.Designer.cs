@@ -33,6 +33,8 @@ partial class BillingForm
         payDayLabel = new Label();
         ammountDueNumericUpDown = new NumericUpDown();
         ammountDueLabel = new Label();
+        closeButton = new Button();
+        saveButton = new Button();
         ((System.ComponentModel.ISupportInitialize)ammountDueNumericUpDown).BeginInit();
         SuspendLayout();
         // 
@@ -87,20 +89,47 @@ partial class BillingForm
         ammountDueLabel.TabIndex = 19;
         ammountDueLabel.Text = "Valor cobrado:";
         // 
+        // closeButton
+        // 
+        closeButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        closeButton.Cursor = Cursors.Hand;
+        closeButton.Location = new Point(183, 558);
+        closeButton.Margin = new Padding(5);
+        closeButton.Name = "closeButton";
+        closeButton.Size = new Size(160, 40);
+        closeButton.TabIndex = 25;
+        closeButton.Text = "Fechar";
+        closeButton.UseVisualStyleBackColor = true;
+        // 
+        // saveButton
+        // 
+        saveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+        saveButton.Cursor = Cursors.Hand;
+        saveButton.Location = new Point(13, 558);
+        saveButton.Margin = new Padding(5);
+        saveButton.Name = "saveButton";
+        saveButton.Size = new Size(160, 40);
+        saveButton.TabIndex = 24;
+        saveButton.Text = "Salvar";
+        saveButton.UseVisualStyleBackColor = true;
+        // 
         // BillingForm
         // 
         AutoScaleDimensions = new SizeF(11F, 25F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(785, 612);
+        Controls.Add(closeButton);
+        Controls.Add(saveButton);
         Controls.Add(wasPaidCheckBox);
         Controls.Add(payDayDateTimePicker);
         Controls.Add(payDayLabel);
         Controls.Add(ammountDueNumericUpDown);
         Controls.Add(ammountDueLabel);
         Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        Margin = new Padding(5, 5, 5, 5);
+        Margin = new Padding(5);
         Name = "BillingForm";
         Text = "BillingForm";
+        Load += BillingForm_Load;
         ((System.ComponentModel.ISupportInitialize)ammountDueNumericUpDown).EndInit();
         ResumeLayout(false);
         PerformLayout();
@@ -113,4 +142,6 @@ partial class BillingForm
     private Label payDayLabel;
     private NumericUpDown ammountDueNumericUpDown;
     private Label ammountDueLabel;
+    private Button closeButton;
+    private Button saveButton;
 }

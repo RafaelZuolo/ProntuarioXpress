@@ -34,8 +34,8 @@
             appointmentViewItemBindingSource = new BindingSource(components);
             extraInfosLabel = new Label();
             extraInfosRichTextBox = new RichTextBox();
-            pacientExtraInfoButton = new Button();
-            closelButton = new Button();
+            appointmentExtraInfoButton = new Button();
+            closeButton = new Button();
             saveButton = new Button();
             billingButton = new Button();
             ((System.ComponentModel.ISupportInitialize)appointmentViewItemBindingSource).BeginInit();
@@ -83,62 +83,66 @@
             extraInfosRichTextBox.TabIndex = 3;
             extraInfosRichTextBox.Text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ";
             // 
-            // pacientExtraInfoButton
+            // appointmentExtraInfoButton
             // 
-            pacientExtraInfoButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            pacientExtraInfoButton.Cursor = Cursors.Hand;
-            pacientExtraInfoButton.Location = new Point(354, 548);
-            pacientExtraInfoButton.Margin = new Padding(5);
-            pacientExtraInfoButton.Name = "pacientExtraInfoButton";
-            pacientExtraInfoButton.Size = new Size(160, 40);
-            pacientExtraInfoButton.TabIndex = 17;
-            pacientExtraInfoButton.Text = "Informações";
-            pacientExtraInfoButton.UseVisualStyleBackColor = true;
+            appointmentExtraInfoButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            appointmentExtraInfoButton.Cursor = Cursors.Hand;
+            appointmentExtraInfoButton.Location = new Point(354, 355);
+            appointmentExtraInfoButton.Margin = new Padding(5);
+            appointmentExtraInfoButton.Name = "appointmentExtraInfoButton";
+            appointmentExtraInfoButton.Size = new Size(160, 40);
+            appointmentExtraInfoButton.TabIndex = 17;
+            appointmentExtraInfoButton.Text = "Informações";
+            appointmentExtraInfoButton.UseVisualStyleBackColor = true;
+            appointmentExtraInfoButton.Click += appointmentExtraInfoButton_Click;
             // 
-            // closelButton
+            // closeButton
             // 
-            closelButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            closelButton.Cursor = Cursors.Hand;
-            closelButton.Location = new Point(184, 548);
-            closelButton.Margin = new Padding(5);
-            closelButton.Name = "closelButton";
-            closelButton.Size = new Size(160, 40);
-            closelButton.TabIndex = 16;
-            closelButton.Text = "Fechar";
-            closelButton.UseVisualStyleBackColor = true;
+            closeButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            closeButton.Cursor = Cursors.Hand;
+            closeButton.Location = new Point(184, 355);
+            closeButton.Margin = new Padding(5);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(160, 40);
+            closeButton.TabIndex = 16;
+            closeButton.Text = "Fechar";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // saveButton
             // 
             saveButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             saveButton.Cursor = Cursors.Hand;
-            saveButton.Location = new Point(14, 548);
+            saveButton.Location = new Point(14, 355);
             saveButton.Margin = new Padding(5);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(160, 40);
             saveButton.TabIndex = 15;
             saveButton.Text = "Salvar";
             saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
             // 
             // billingButton
             // 
             billingButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             billingButton.Cursor = Cursors.Hand;
-            billingButton.Location = new Point(598, 548);
+            billingButton.Location = new Point(598, 355);
             billingButton.Margin = new Padding(5);
             billingButton.Name = "billingButton";
             billingButton.Size = new Size(160, 40);
             billingButton.TabIndex = 18;
             billingButton.Text = "Cobrança";
             billingButton.UseVisualStyleBackColor = true;
+            billingButton.Click += billingButton_Click;
             // 
             // AppointmentForm
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(777, 602);
+            ClientSize = new Size(777, 409);
             Controls.Add(billingButton);
-            Controls.Add(pacientExtraInfoButton);
-            Controls.Add(closelButton);
+            Controls.Add(appointmentExtraInfoButton);
+            Controls.Add(closeButton);
             Controls.Add(saveButton);
             Controls.Add(extraInfosRichTextBox);
             Controls.Add(extraInfosLabel);
@@ -162,8 +166,8 @@
         private Label extraInfosLabel;
         private RichTextBox extraInfosRichTextBox;
         private BindingSource appointmentViewItemBindingSource;
-        private Button pacientExtraInfoButton;
-        private Button closelButton;
+        private Button appointmentExtraInfoButton;
+        private Button closeButton;
         private Button saveButton;
         private Button billingButton;
     }

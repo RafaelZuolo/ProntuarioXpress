@@ -8,10 +8,10 @@ public partial class PacientForm : Form, IPacientForm
         ?? throw new Exception("viewItem was null");
 
     public EventHandler<PacientViewItem>? SaveEvent { get; set; }
+    public FormClosingEventHandler? CloseEvent { get; set; }
     public EventHandler? ShowExtraInfoEvent { get; set; }
     public EventHandler<AppointmentViewItem>? OpenAppointmentEvent { get; set; }
     public EventHandler? NewAppointmentEvent { get; set; }
-    public FormClosingEventHandler? CloseEvent { get; set; }
     public EventHandler? ExportAppointmentsEvent { get; set; }
 
     public PacientForm()
@@ -50,7 +50,7 @@ public partial class PacientForm : Form, IPacientForm
         ShowExtraInfoEvent?.Invoke(sender, EventArgs.Empty);
     }
 
-    private void closelButton_Click(object sender, EventArgs e)
+    private void closeButton_Click(object sender, EventArgs e)
     {
         Close();
     }

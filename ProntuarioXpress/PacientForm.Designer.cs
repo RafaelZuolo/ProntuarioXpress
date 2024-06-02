@@ -37,7 +37,7 @@
             cpfLabel = new Label();
             birthDateLabel = new Label();
             birthdayDateTimePicker = new DateTimePicker();
-            closelButton = new Button();
+            closeButton = new Button();
             ageLabel = new Label();
             ageTextBox = new TextBox();
             appointmentsListBox = new ListBox();
@@ -132,18 +132,18 @@
             birthdayDateTimePicker.Size = new Size(312, 33);
             birthdayDateTimePicker.TabIndex = 8;
             // 
-            // closelButton
+            // closeButton
             // 
-            closelButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            closelButton.Cursor = Cursors.Hand;
-            closelButton.Location = new Point(191, 259);
-            closelButton.Margin = new Padding(5);
-            closelButton.Name = "closelButton";
-            closelButton.Size = new Size(160, 40);
-            closelButton.TabIndex = 9;
-            closelButton.Text = "Fechar";
-            closelButton.UseVisualStyleBackColor = true;
-            closelButton.Click += closelButton_Click;
+            closeButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            closeButton.Cursor = Cursors.Hand;
+            closeButton.Location = new Point(191, 259);
+            closeButton.Margin = new Padding(5);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(160, 40);
+            closeButton.TabIndex = 9;
+            closeButton.Text = "Fechar";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
             // 
             // ageLabel
             // 
@@ -286,7 +286,7 @@
             Controls.Add(appointmentsListBox);
             Controls.Add(ageTextBox);
             Controls.Add(ageLabel);
-            Controls.Add(closelButton);
+            Controls.Add(closeButton);
             Controls.Add(birthdayDateTimePicker);
             Controls.Add(birthDateLabel);
             Controls.Add(cpfTextBox);
@@ -316,7 +316,7 @@
         private Label cpfLabel;
         private Label birthDateLabel;
         private DateTimePicker birthdayDateTimePicker;
-        private Button closelButton;
+        private Button closeButton;
         private Label ageLabel;
         private TextBox ageTextBox;
         private ListBox appointmentsListBox;
