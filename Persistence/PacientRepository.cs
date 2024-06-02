@@ -9,7 +9,7 @@ public class PacientRepository : IPacientRepository
 
     public Pacient Get(string id)
     {
-        return pacientById[id]; 
+        return pacientById[id];
     }
 
     public IList<Pacient> GetAll()
