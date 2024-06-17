@@ -23,9 +23,14 @@ public class AppointmentPresenter : IAppointmentPresenter
 
     public void InitWith(Appointment appointment, string pacientId)
     {
-        this.appointment = AppointmentViewItem.FromModel(appointment);
+        InitWith(AppointmentViewItem.FromModel(appointment), pacientId);
+    }
+
+    public void InitWith(AppointmentViewItem appointmentViewItem, string pacientId)
+    {
+        appointment = appointmentViewItem;
         this.pacientId = pacientId;
-        form.AppointmentViewItemBindingSource.DataSource = this.appointment;
+        form.AppointmentViewItemBindingSource.DataSource = appointment;
     }
 
     public void Show()
