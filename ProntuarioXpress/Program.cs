@@ -27,8 +27,14 @@ internal static class Program
         builder.Services.AddTransient<IMainForm, MainForm>();
         builder.Services.AddTransient<IPacientForm, PacientForm>();
         builder.Services.AddTransient<IAppointmentForm, AppointmentForm>();
+        builder.Services.AddTransient<IAppointmentPresenter, AppointmentPresenter>();
+        builder.Services.AddTransient<IPacientPresenter, PacientPresenter>();
+
+
         builder.Services.AddSingleton<IPacientService, PacientService>();
         builder.Services.AddSingleton<IAppointmentService, AppointmentService>();
+
+
         builder.Services.AddSingleton<IPacientRepository, PacientRepository>();
         builder.Services.AddSingleton<IAppointmentRepository, AppointmentRepository>();
 

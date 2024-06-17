@@ -9,6 +9,8 @@ public partial class AppointmentForm : Form, IAppointmentForm
     public EventHandler? OpenExtraInfoEvent { get; set; }
     public EventHandler? OpenBillingEvent { get; set; }
 
+    public BindingSource AppointmentViewItemBindingSource => appointmentViewItemBindingSource;
+
     public AppointmentForm()
     {
         InitializeComponent();
@@ -44,5 +46,15 @@ public partial class AppointmentForm : Form, IAppointmentForm
     private void billingButton_Click(object sender, EventArgs e)
     {
         OpenBillingEvent?.Invoke(sender, e);
+    }
+
+    public void InitWith(AppointmentViewItem viewItem)
+    {
+        throw new NotImplementedException();
+    }
+
+    public void SetStatusStripLabel(string v)
+    {
+        throw new NotImplementedException();
     }
 }

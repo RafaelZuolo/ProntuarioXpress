@@ -8,6 +8,10 @@ public interface IAppointmentForm
     FormClosingEventHandler? CloseEvent { get; set; }
     EventHandler? OpenExtraInfoEvent { get; set; }
     EventHandler? OpenBillingEvent { get; set; }
+    BindingSource AppointmentViewItemBindingSource { get; }
 
     void ShowForm();
+
+    void InitWith(AppointmentViewItem viewItem);
+    void SetStatusStripLabel(string v);
 }

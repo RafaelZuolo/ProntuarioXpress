@@ -1,5 +1,6 @@
 ﻿using Application;
 using Core.Model;
+using Microsoft.Extensions.DependencyInjection;
 using UI.ViewItems;
 
 namespace UI.Presenters;
@@ -80,13 +81,15 @@ public class PacientPresenter : IPacientPresenter
 
     public void OpenAppointmentEvent(object? sender, AppointmentViewItem appointment)
     {
-        var appointmentPresenter = new AppointmentPresenter(new AppointmentForm());
+        var appointmentPresenter = new AppointmentPresenter(new AppointmentForm());// TODO: use injection
         appointmentPresenter.Show();
     }
 
     public void NewAppointmentEvent(object? sender, EventArgs e)
     {
-        var appointmentPresenter = new AppointmentPresenter(new AppointmentForm());
+        var appointmentPresenter = Program.ServiceProvider.GetService(typeof(IAppointmentPresenter)) as IAppointmentPresenter
+            ?? throw new Exception("Failed to create appointment presenter");
+        appointmentPresenter.InitWith(new Appointment(DateTime.Today), pacient.Id);
         appointmentPresenter.Show();
     }
 
